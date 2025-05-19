@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -17,6 +16,7 @@ import {
 } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import Layout from '@/components/Layout';
 
 // Mock data for spaces
 const ALL_SPACES: Space[] = [
@@ -125,15 +125,15 @@ const SpaceFilters = ({
   onFilterChange: (filters: any) => void;
 }) => {
   const [priceRange, setPriceRange] = useState([0, 200]);
-  const [selectedCity, setSelectedCity] = useState("");
-  const [capacity, setCapacity] = useState("");
+  const [selectedCity, setSelectedCity] = useState("all");
+  const [capacity, setCapacity] = useState("any");
   const [withRevenueShare, setWithRevenueShare] = useState(false);
   
   const handleApplyFilters = () => {
     onFilterChange({
       priceRange,
-      city: selectedCity,
-      capacity: capacity ? parseInt(capacity) : null,
+      city: selectedCity === "all" ? "" : selectedCity,
+      capacity: capacity === "any" ? null : parseInt(capacity),
       withRevenueShare,
     });
   };
@@ -166,7 +166,7 @@ const SpaceFilters = ({
             <SelectValue placeholder="Todas las ciudades" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">Todas las ciudades</SelectItem>
+            <SelectItem value="all">Todas las ciudades</SelectItem>
             <SelectItem value="Barcelona">Barcelona</SelectItem>
             <SelectItem value="Madrid">Madrid</SelectItem>
             <SelectItem value="Valencia">Valencia</SelectItem>
@@ -182,7 +182,7 @@ const SpaceFilters = ({
             <SelectValue placeholder="Cualquier capacidad" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">Cualquier capacidad</SelectItem>
+            <SelectItem value="any">Cualquier capacidad</SelectItem>
             <SelectItem value="10">Hasta 10 personas</SelectItem>
             <SelectItem value="30">Hasta 30 personas</SelectItem>
             <SelectItem value="50">Hasta 50 personas</SelectItem>
@@ -248,9 +248,7 @@ const Spaces = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      
+    <Layout>
       <main className="flex-grow py-8">
         <div className="container">
           <div className="mb-8">
@@ -291,9 +289,7 @@ const Spaces = () => {
           </div>
         </div>
       </main>
-      
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

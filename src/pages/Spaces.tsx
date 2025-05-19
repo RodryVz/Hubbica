@@ -18,8 +18,8 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import Layout from '@/components/Layout';
 
-// Mock data for spaces
-const ALL_SPACES: Space[] = [
+// Mock data for spaces - exportamos para poder usarlo en el detalle de espacio
+export const ALL_SPACES: Space[] = [
   {
     id: '1',
     name: 'Terraza con Vista Panorámica',

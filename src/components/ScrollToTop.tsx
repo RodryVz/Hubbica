@@ -1,12 +1,12 @@
 
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  const [showButton, setShowButton] = React.useState(false);
+  const [showButton, setShowButton] = useState(false);
 
   // Al cambiar de ruta, desplaza al principio
   useEffect(() => {

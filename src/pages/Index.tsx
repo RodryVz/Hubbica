@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -6,6 +5,8 @@ import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import SpaceCard, { Space } from '@/components/SpaceCard';
 import { Button } from '@/components/ui/button';
+import Layout from '@/components/Layout';
+import HostModal from '@/components/HostModal';
 
 // Mock data for featured spaces
 const FEATURED_SPACES: Space[] = [
@@ -100,10 +101,10 @@ const CATEGORIES = [
 ];
 
 const Index = () => {
+  const [showHostModal, setShowHostModal] = useState(false);
+  
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      
+    <Layout>
       <main className="flex-grow">
         <Hero />
         
@@ -198,26 +199,30 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Become a host */}
-        <section className="py-16">
+        {/* Become a host - Rediseñado según la imagen de referencia */}
+        <section className="py-16 bg-black">
           <div className="container">
-            <div className="bg-brand-deep-purple/10 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
-              <div className="md:w-1/2">
-                <h2 className="text-3xl font-display font-bold mb-4">
-                  ¿Tienes un espacio único?
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="text-white space-y-6">
+                <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
+                  Alquilá tu espacio y ganá dinero con SpacePal
                 </h2>
-                <p className="text-lg mb-6">
-                  Monetiza tu espacio por hora o comparte los ingresos de los eventos que se realicen en él.
+                <p className="text-xl">
+                  Alquilá por horas o días. Vos decidís cuándo y cuánto ganar.
                 </p>
-                <Link to="/host">
-                  <Button size="lg">Conviértete en anfitrión</Button>
-                </Link>
+                <Button 
+                  size="lg" 
+                  className="bg-teal-500 hover:bg-teal-600 text-white mt-4"
+                  onClick={() => setShowHostModal(true)}
+                >
+                  Publicá tu espacio ahora
+                </Button>
               </div>
-              <div className="md:w-1/2">
+              <div>
                 <img 
-                  src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Become a host"
-                  className="rounded-lg w-full h-64 object-cover"
+                  src="/lovable-uploads/75d27a1f-ec67-4738-a887-10b52ff5f612.png" 
+                  alt="Persona publicando su espacio"
+                  className="rounded-lg w-full h-auto"
                 />
               </div>
             </div>
@@ -225,8 +230,11 @@ const Index = () => {
         </section>
       </main>
       
-      <Footer />
-    </div>
+      <HostModal 
+        open={showHostModal} 
+        onOpenChange={setShowHostModal} 
+      />
+    </Layout>
   );
 };
 

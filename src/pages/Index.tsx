@@ -4,7 +4,6 @@ import Hero from '@/components/Hero';
 import SpaceCard, { Space } from '@/components/SpaceCard';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
-import HostModal from '@/components/HostModal';
 
 // Mock data for featured spaces
 const FEATURED_SPACES: Space[] = [
@@ -99,8 +98,6 @@ const CATEGORIES = [
 ];
 
 const Index = () => {
-  const [showHostModal, setShowHostModal] = useState(false);
-  
   return (
     <Layout>
       <main className="flex-grow">
@@ -190,7 +187,7 @@ const Index = () => {
             </div>
             
             <div className="mt-12 text-center">
-              <Link to="/how-it-works">
+              <Link to="/how-to-host">
                 <Button variant="outline">Saber más</Button>
               </Link>
             </div>
@@ -206,7 +203,7 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-64 md:h-auto">
                   <img 
-                    src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                    src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                     alt="Publica tu espacio"
                     className="w-full h-full object-cover"
                   />
@@ -244,24 +241,20 @@ const Index = () => {
                       <span>Ganancias recurrentes</span>
                     </li>
                   </ul>
-                  <Button 
-                    size="lg" 
-                    className="rounded-full mt-2"
-                    onClick={() => setShowHostModal(true)}
-                  >
-                    Publicá tu espacio ahora
-                  </Button>
+                  <Link to="/how-to-host">
+                    <Button 
+                      size="lg" 
+                      className="rounded-full mt-2"
+                    >
+                      Publicá tu espacio ahora
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </section>
       </main>
-      
-      <HostModal 
-        open={showHostModal} 
-        onOpenChange={setShowHostModal} 
-      />
     </Layout>
   );
 };

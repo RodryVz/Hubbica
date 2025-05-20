@@ -12,6 +12,7 @@ import UserDashboard from "./pages/UserDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import HowToHost from "./pages/HowToHost";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/host" element={<HostDashboard />} />
             <Route path="/dashboard" element={<UserDashboard />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/how-to-host" element={<HowToHost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

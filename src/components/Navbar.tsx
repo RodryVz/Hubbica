@@ -20,7 +20,7 @@ const Navbar = () => {
           <Link to="/spaces" className="text-gray-600 hover:text-brand-purple transition-colors">
             Explorar espacios
           </Link>
-          <Link to="/how-it-works" className="text-gray-600 hover:text-brand-purple transition-colors">
+          <Link to="/how-to-host" className="text-gray-600 hover:text-brand-purple transition-colors">
             Cómo funciona
           </Link>
         </div>
@@ -33,7 +33,7 @@ const Navbar = () => {
             </Button>
           </Link>
           
-          <Link to="/host">
+          <Link to="/how-to-host">
             <Button className="rounded-full">Publica tu espacio</Button>
           </Link>
         </div>
@@ -50,10 +50,10 @@ const Navbar = () => {
               <Link to="/spaces" className="p-2 hover:bg-gray-100 rounded-md">
                 Explorar espacios
               </Link>
-              <Link to="/how-it-works" className="p-2 hover:bg-gray-100 rounded-md">
+              <Link to="/how-to-host" className="p-2 hover:bg-gray-100 rounded-md">
                 Cómo funciona
               </Link>
-              <Link to="/host" className="p-2 hover:bg-gray-100 rounded-md">
+              <Link to="/how-to-host" className="p-2 hover:bg-gray-100 rounded-md">
                 Publica tu espacio
               </Link>
             </div>

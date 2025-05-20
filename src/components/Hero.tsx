@@ -36,7 +36,7 @@ const Hero = () => {
                 Explorar espacios
               </Button>
             </Link>
-            <Link to="/host">
+            <Link to="/how-to-host">
               <Button className="rounded-full">
                 Publica tu espacio
               </Button>

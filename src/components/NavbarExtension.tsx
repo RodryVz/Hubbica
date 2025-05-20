@@ -20,7 +20,7 @@ const NavbarExtension = () => {
         <Link to="/spaces">
           <Button variant="ghost">Explorar espacios</Button>
         </Link>
-        <Link to="/host">
+        <Link to="/how-to-host">
           <Button variant="outline">Conviértete en anfitrión</Button>
         </Link>
         <Link to="/dashboard">
@@ -44,7 +44,7 @@ const NavbarExtension = () => {
             <Link to="/spaces" onClick={toggleMenu}>
               <Button variant="ghost" className="w-full justify-start">Explorar espacios</Button>
             </Link>
-            <Link to="/host" onClick={toggleMenu}>
+            <Link to="/how-to-host" onClick={toggleMenu}>
               <Button variant="ghost" className="w-full justify-start">Conviértete en anfitrión</Button>
             </Link>
             <Link to="/dashboard" onClick={toggleMenu}>

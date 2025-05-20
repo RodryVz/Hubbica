@@ -1,7 +1,8 @@
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ArrowLeft, Users, Euro, Clock, BadgeCheck } from 'lucide-react';
-import { Whatsapp } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -115,7 +116,7 @@ const SpaceDetail = () => {
               
               <Button className="w-full mb-3">Reservar</Button>
               <Button variant="outline" className="w-full">
-                <Whatsapp className="h-4 w-4 mr-2" />
+                <MessageSquare className="h-4 w-4 mr-2" />
                 Contactar al anfitrión
               </Button>
             </div>

@@ -5,15 +5,19 @@ import IntentSearch from './IntentSearch';
 
 const Hero = () => {
   return (
-    <div className="relative overflow-hidden py-20 md:py-32">
-      {/* Background decoration */}
+    <div className="relative overflow-hidden py-24 md:py-36">
+      {/* Background image with blur effect */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-brand-purple/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-72 h-72 bg-brand-orange/10 rounded-full blur-3xl animate-float animation-delay-2000"></div>
+        <img 
+          src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+          alt="Background" 
+          className="w-full h-full object-cover object-center opacity-15"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/70 backdrop-blur-sm"></div>
       </div>
       
-      <div className="container max-w-5xl">
-        <div className="text-center space-y-6 animate-fade-in">
+      <div className="container max-w-5xl relative z-10">
+        <div className="text-center space-y-8 animate-fade-in">
           <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight">
             Espacios únicos para <span className="text-brand-purple">experiencias</span> inolvidables
           </h1>
@@ -22,7 +26,7 @@ const Hero = () => {
             Describe la experiencia que quieres crear y encuentra el espacio perfecto para hacerla realidad.
           </p>
           
-          <div className="max-w-2xl mx-auto mt-8">
+          <div className="w-full max-w-2xl mx-auto">
             <IntentSearch />
           </div>
           
@@ -37,30 +41,6 @@ const Hero = () => {
                 Publica tu espacio
               </Button>
             </Link>
-          </div>
-        </div>
-      </div>
-      
-      {/* Trust indicators */}
-      <div className="container mt-16">
-        <div className="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-xl p-6 shadow-sm">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div>
-              <p className="font-display text-2xl font-bold text-brand-purple">250+</p>
-              <p className="text-gray-600 text-sm">Espacios únicos</p>
-            </div>
-            <div>
-              <p className="font-display text-2xl font-bold text-brand-purple">1200+</p>
-              <p className="text-gray-600 text-sm">Experiencias creadas</p>
-            </div>
-            <div>
-              <p className="font-display text-2xl font-bold text-brand-purple">98%</p>
-              <p className="text-gray-600 text-sm">Usuarios satisfechos</p>
-            </div>
-            <div>
-              <p className="font-display text-2xl font-bold text-brand-purple">5+</p>
-              <p className="text-gray-600 text-sm">Ciudades disponibles</p>
-            </div>
           </div>
         </div>
       </div>

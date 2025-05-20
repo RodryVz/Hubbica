@@ -36,13 +36,13 @@ const SpaceCard = ({ space }: SpaceCardProps) => {
 
   return (
     <Link to={`/spaces/${space.id}`}>
-      <Card className="overflow-hidden hover:shadow-md transition-shadow">
+      <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-0 rounded-xl">
         <div className="relative">
           <AspectRatio ratio={4/3}>
             <img 
               src={space.images[currentImage]} 
               alt={space.name}
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full rounded-t-xl"
             />
           </AspectRatio>
           
@@ -50,14 +50,14 @@ const SpaceCard = ({ space }: SpaceCardProps) => {
             <>
               <button 
                 onClick={(e) => { e.preventDefault(); prevImage(); }}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-white w-8 h-8 rounded-full flex items-center justify-center"
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/50 transition-colors"
                 aria-label="Imagen anterior"
               >
                 ‹
               </button>
               <button 
                 onClick={(e) => { e.preventDefault(); nextImage(); }}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-white w-8 h-8 rounded-full flex items-center justify-center"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/50 transition-colors"
                 aria-label="Imagen siguiente"
               >
                 ›
@@ -75,41 +75,33 @@ const SpaceCard = ({ space }: SpaceCardProps) => {
           </div>
         </div>
         
-        <CardContent className="p-4">
-          <div className="flex justify-between items-start mb-1">
-            <h3 className="font-medium truncate pr-2">{space.name}</h3>
-            <div className="flex items-center gap-1 text-sm">
+        <CardContent className="p-4 space-y-3">
+          <div className="flex justify-between items-start">
+            <h3 className="font-medium text-lg truncate pr-2">{space.name}</h3>
+            <div className="flex items-center gap-1 text-sm bg-gray-100 px-2 py-1 rounded-full">
               <span>★</span>
-              <span>{space.rating.toFixed(1)}</span>
+              <span className="font-medium">{space.rating.toFixed(1)}</span>
             </div>
           </div>
           
-          <p className="text-sm text-gray-500 mb-2">
+          <p className="text-sm text-gray-500">
             {space.neighborhood}, {space.city}
           </p>
           
-          <div className="flex flex-wrap gap-1 mb-3">
-            {space.tags.slice(0, 3).map(tag => (
-              <Badge key={tag} variant="outline" className="text-xs">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-          
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center pt-2">
             <div>
-              <p className="font-medium">
+              <p className="font-medium text-brand-purple">
                 ${space.pricePerHour.toLocaleString()}/hora
               </p>
               {space.revenueShare > 0 && (
-                <p className="text-xs text-brand-purple">
+                <p className="text-xs text-gray-500">
                   o {space.revenueShare}% de ingresos
                 </p>
               )}
             </div>
-            <p className="text-sm text-gray-500">
+            <div className="text-sm text-gray-500 bg-gray-50 px-3 py-1 rounded-full">
               Hasta {space.capacity} personas
-            </p>
+            </div>
           </div>
         </CardContent>
       </Card>

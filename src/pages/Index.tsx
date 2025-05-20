@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import Footer from '@/components/Footer';
 import SpaceCard, { Space } from '@/components/SpaceCard';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
@@ -108,40 +107,10 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         
-        {/* Categories */}
+        {/* Featured spaces - Diseño más limpio */}
         <section className="py-16 bg-gray-50">
           <div className="container">
-            <h2 className="text-3xl font-display font-bold mb-8 text-center">
-              Explora por tipo de experiencia
-            </h2>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {CATEGORIES.map((category) => (
-                <Link 
-                  key={category.id} 
-                  to={`/spaces?category=${category.id}`} 
-                  className="group"
-                >
-                  <div className="rounded-xl overflow-hidden aspect-square relative">
-                    <img 
-                      src={category.image} 
-                      alt={category.name}
-                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                      <h3 className="text-white font-medium p-4">{category.name}</h3>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-        
-        {/* Featured spaces */}
-        <section className="py-16">
-          <div className="container">
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex justify-between items-center mb-10">
               <h2 className="text-3xl font-display font-bold">
                 Espacios destacados
               </h2>
@@ -150,9 +119,39 @@ const Index = () => {
               </Link>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {FEATURED_SPACES.map((space) => (
                 <SpaceCard key={space.id} space={space} />
+              ))}
+            </div>
+          </div>
+        </section>
+        
+        {/* Categories */}
+        <section className="py-16">
+          <div className="container">
+            <h2 className="text-3xl font-display font-bold mb-10 text-center">
+              Explora por tipo de experiencia
+            </h2>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {CATEGORIES.map((category) => (
+                <Link 
+                  key={category.id} 
+                  to={`/spaces?category=${category.id}`} 
+                  className="group"
+                >
+                  <div className="rounded-xl overflow-hidden aspect-square relative shadow-md hover:shadow-xl transition-all">
+                    <img 
+                      src={category.image} 
+                      alt={category.name}
+                      className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                      <h3 className="text-white font-medium p-5 text-lg">{category.name}</h3>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -199,31 +198,61 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Become a host - Rediseñado según la imagen de referencia */}
-        <section className="py-16 bg-black">
+        {/* Become a host - Rediseñado */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-purple/20 to-brand-purple/5"></div>
+          
           <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="text-white space-y-6">
-                <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
-                  Alquilá tu espacio y ganá dinero con SpacePal
-                </h2>
-                <p className="text-xl">
-                  Alquilá por horas o días. Vos decidís cuándo y cuánto ganar.
-                </p>
-                <Button 
-                  size="lg" 
-                  className="bg-teal-500 hover:bg-teal-600 text-white mt-4"
-                  onClick={() => setShowHostModal(true)}
-                >
-                  Publicá tu espacio ahora
-                </Button>
-              </div>
-              <div>
-                <img 
-                  src="/lovable-uploads/75d27a1f-ec67-4738-a887-10b52ff5f612.png" 
-                  alt="Persona publicando su espacio"
-                  className="rounded-lg w-full h-auto"
-                />
+            <div className="max-w-5xl mx-auto bg-white rounded-2xl overflow-hidden shadow-xl">
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="relative h-64 md:h-auto">
+                  <img 
+                    src="/lovable-uploads/75d27a1f-ec67-4738-a887-10b52ff5f612.png" 
+                    alt="Publica tu espacio"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent md:hidden flex items-end">
+                    <h2 className="text-2xl font-display font-bold text-white p-6">
+                      Monetizá tu espacio
+                    </h2>
+                  </div>
+                </div>
+                
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <h2 className="hidden md:block text-3xl md:text-4xl font-display font-bold mb-4">
+                    Monetizá tu espacio
+                  </h2>
+                  <p className="text-lg mb-6 text-gray-700">
+                    Genera ingresos alquilando tu espacio por horas o días. Tú decides cuándo está disponible, cuánto cuesta y qué experiencias ofrecer.
+                  </p>
+                  <ul className="mb-6 space-y-2">
+                    <li className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-brand-purple/20 flex items-center justify-center">
+                        <span className="text-brand-purple">✓</span>
+                      </div>
+                      <span>Sin inversión inicial</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-brand-purple/20 flex items-center justify-center">
+                        <span className="text-brand-purple">✓</span>
+                      </div>
+                      <span>Flexibilidad total de horarios</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-brand-purple/20 flex items-center justify-center">
+                        <span className="text-brand-purple">✓</span>
+                      </div>
+                      <span>Ganancias recurrentes</span>
+                    </li>
+                  </ul>
+                  <Button 
+                    size="lg" 
+                    className="rounded-full mt-2"
+                    onClick={() => setShowHostModal(true)}
+                  >
+                    Publicá tu espacio ahora
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

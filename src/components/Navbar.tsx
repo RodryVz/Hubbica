@@ -1,13 +1,11 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Search, User } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-4">
       <div className="container flex items-center justify-between">
@@ -22,39 +20,22 @@ const Navbar = () => {
           <Link to="/spaces" className="text-gray-600 hover:text-brand-purple transition-colors">
             Explorar espacios
           </Link>
-          <Link to="/host" className="text-gray-600 hover:text-brand-purple transition-colors">
-            Anfitriones
-          </Link>
           <Link to="/how-it-works" className="text-gray-600 hover:text-brand-purple transition-colors">
             Cómo funciona
           </Link>
         </div>
         
         {/* CTA Buttons */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <Link to="/search">
             <Button variant="outline" size="icon" className="rounded-full">
               <Search className="h-4 w-4" />
             </Button>
           </Link>
           
-          {isLoggedIn ? (
-            <Link to="/dashboard">
-              <Button variant="ghost" className="rounded-full flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>Mi cuenta</span>
-              </Button>
-            </Link>
-          ) : (
-            <>
-              <Link to="/login">
-                <Button variant="ghost">Iniciar sesión</Button>
-              </Link>
-              <Link to="/signup">
-                <Button>Registrarse</Button>
-              </Link>
-            </>
-          )}
+          <Link to="/host">
+            <Button className="rounded-full">Publica tu espacio</Button>
+          </Link>
         </div>
         
         {/* Mobile Navigation */}
@@ -69,27 +50,12 @@ const Navbar = () => {
               <Link to="/spaces" className="p-2 hover:bg-gray-100 rounded-md">
                 Explorar espacios
               </Link>
-              <Link to="/host" className="p-2 hover:bg-gray-100 rounded-md">
-                Anfitriones
-              </Link>
               <Link to="/how-it-works" className="p-2 hover:bg-gray-100 rounded-md">
                 Cómo funciona
               </Link>
-              <div className="border-t my-2"></div>
-              {isLoggedIn ? (
-                <Link to="/dashboard" className="p-2 hover:bg-gray-100 rounded-md">
-                  Mi cuenta
-                </Link>
-              ) : (
-                <>
-                  <Link to="/login" className="p-2 hover:bg-gray-100 rounded-md">
-                    Iniciar sesión
-                  </Link>
-                  <Link to="/signup" className="p-2 hover:bg-gray-100 rounded-md">
-                    Registrarse
-                  </Link>
-                </>
-              )}
+              <Link to="/host" className="p-2 hover:bg-gray-100 rounded-md">
+                Publica tu espacio
+              </Link>
             </div>
           </SheetContent>
         </Sheet>

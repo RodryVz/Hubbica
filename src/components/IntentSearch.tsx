@@ -37,15 +37,9 @@ const IntentSearch = () => {
     }
   };
 
-  const examples = [
-    'Una terraza con luces para un after con amigos',
-    'Estudio amplio para workshop de cerámica',
-    'Espacio tranquilo para sesión de fotos'
-  ];
-
   return (
-    <form onSubmit={handleSearch} className="relative w-full max-w-2xl mx-auto">
-      <div className="flex gap-2 p-1.5 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-full shadow-sm">
+    <form onSubmit={handleSearch} className="w-full max-w-2xl mx-auto">
+      <div className="flex gap-2 p-1.5 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-full shadow-md">
         <div className="relative flex-grow">
           <Input
             type="text"
@@ -73,21 +67,6 @@ const IntentSearch = () => {
             </>
           )}
         </Button>
-      </div>
-      <div className="mt-3 flex flex-wrap gap-2 justify-center">
-        <span className="text-xs text-gray-500 dark:text-gray-400">Inspiración:</span>
-        {examples.map((example, index) => (
-          <Button 
-            key={index}
-            type="button" 
-            variant="ghost" 
-            size="sm" 
-            className="text-xs h-auto py-1 dark:text-slate-300 dark:hover:bg-slate-800"
-            onClick={() => setSearchIntent(example)}
-          >
-            {example}
-          </Button>
-        ))}
       </div>
     </form>
   );

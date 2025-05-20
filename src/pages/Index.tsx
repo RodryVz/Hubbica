@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '@/components/Hero';
@@ -198,7 +197,7 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Become a host - Rediseñado */}
+        {/* Become a host - Con imagen actualizada */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-purple/20 to-brand-purple/5"></div>
           
@@ -207,7 +206,7 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-64 md:h-auto">
                   <img 
-                    src="/lovable-uploads/75d27a1f-ec67-4738-a887-10b52ff5f612.png" 
+                    src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                     alt="Publica tu espacio"
                     className="w-full h-full object-cover"
                   />

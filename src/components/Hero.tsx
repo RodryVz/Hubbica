@@ -6,14 +6,14 @@ import IntentSearch from './IntentSearch';
 const Hero = () => {
   return (
     <div className="relative overflow-hidden py-24 md:py-36">
-      {/* Background image with blur effect */}
+      {/* Background image with enhanced visibility */}
       <div className="absolute inset-0 -z-10">
         <img 
           src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
           alt="Background" 
-          className="w-full h-full object-cover object-center opacity-15"
+          className="w-full h-full object-cover object-center opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/70 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-white/60 backdrop-blur-[2px]"></div>
       </div>
       
       <div className="container max-w-5xl relative z-10">

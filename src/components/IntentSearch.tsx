@@ -6,6 +6,15 @@ import { Input } from '@/components/ui/input';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
 
+/**
+ * IntentSearch component - Intent-based search input with animated feedback
+ * 
+ * Features:
+ * - Clean, minimal search interface
+ * - Visual feedback during search
+ * - Error handling for empty searches
+ * - Navigates to results page on submission
+ */
 const IntentSearch = () => {
   const [searchIntent, setSearchIntent] = useState('');
   const [isSearching, setIsSearching] = useState(false);
@@ -39,11 +48,11 @@ const IntentSearch = () => {
 
   return (
     <form onSubmit={handleSearch} className="w-full max-w-2xl mx-auto">
-      <div className="flex gap-2 p-1.5 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-full shadow-md">
+      <div className="flex gap-2 p-1.5 bg-white border border-gray-200 rounded-full shadow-md">
         <div className="relative flex-grow">
           <Input
             type="text"
-            className="pl-4 pr-4 py-4 h-auto rounded-full border-0 shadow-none text-base dark:bg-slate-800 dark:text-slate-100"
+            className="pl-4 pr-4 py-4 h-auto rounded-full border-0 shadow-none text-base"
             placeholder="Describe lo que quieres vivir..."
             value={searchIntent}
             onChange={(e) => setSearchIntent(e.target.value)}
@@ -51,20 +60,16 @@ const IntentSearch = () => {
         </div>
         <Button 
           type="submit" 
-          size="lg" 
-          className="rounded-full px-6"
+          size="icon"
+          className="rounded-full w-12 h-12 flex items-center justify-center"
           disabled={isSearching}
         >
           {isSearching ? (
-            <span className="animate-pulse flex items-center">
-              <Search className="h-4 w-4 mr-2" />
-              <span>Buscando...</span>
+            <span className="animate-pulse">
+              <Search className="h-5 w-5" />
             </span>
           ) : (
-            <>
-              <Search className="h-4 w-4 mr-2" />
-              <span>Buscar</span>
-            </>
+            <Search className="h-5 w-5" />
           )}
         </Button>
       </div>

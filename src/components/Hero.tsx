@@ -23,7 +23,7 @@ const Hero = () => {
           alt="Background" 
           className="w-full h-full object-cover object-center opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-white/60 dark:from-gray-900/80 dark:to-gray-900/70 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-white/60 backdrop-blur-[2px]"></div>
       </div>
       
       <div className="container max-w-5xl relative z-10">
@@ -32,7 +32,7 @@ const Hero = () => {
             Espacios únicos para <span className="text-brand-purple">experiencias</span> inolvidables
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4 sm:px-0">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
             Describe la experiencia que quieres crear y encuentra el espacio perfecto para hacerla realidad.
           </p>
           

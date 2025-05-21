@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '@/components/Hero';
@@ -153,33 +154,36 @@ const Index = () => {
           </div>
         </section>
         
-        {/* How it works */}
-        <section className="py-16 bg-brand-purple/5">
+        {/* How it works - Enhanced visual design */}
+        <section className="py-16 bg-gradient-to-br from-brand-purple/5 to-white">
           <div className="container">
             <h2 className="text-3xl font-display font-bold mb-12 text-center">
               ¿Cómo funciona?
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-brand-purple text-white rounded-full flex items-center justify-center mb-4 text-xl font-bold">1</div>
-                <h3 className="text-xl font-display mb-2">Describe tu experiencia</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-8 text-center relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-brand-purple/5 rounded-full -mr-12 -mt-12"></div>
+                <div className="w-16 h-16 bg-brand-purple text-white rounded-full flex items-center justify-center mb-6 text-xl font-bold mx-auto relative z-10 group-hover:scale-110 transition-transform">1</div>
+                <h3 className="text-xl font-display mb-3 group-hover:text-brand-purple transition-colors">Describe tu experiencia</h3>
                 <p className="text-gray-600">
                   Cuéntanos qué tipo de evento quieres organizar y te sugeriremos los espacios ideales.
                 </p>
               </div>
               
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-brand-purple text-white rounded-full flex items-center justify-center mb-4 text-xl font-bold">2</div>
-                <h3 className="text-xl font-display mb-2">Contacta al anfitrión</h3>
+              <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-8 text-center relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-brand-purple/5 rounded-full -mr-12 -mt-12"></div>
+                <div className="w-16 h-16 bg-brand-purple text-white rounded-full flex items-center justify-center mb-6 text-xl font-bold mx-auto relative z-10 group-hover:scale-110 transition-transform">2</div>
+                <h3 className="text-xl font-display mb-3 group-hover:text-brand-purple transition-colors">Contacta al anfitrión</h3>
                 <p className="text-gray-600">
                   Reserva directamente o acuerda un modelo de monetización compartida con el anfitrión.
                 </p>
               </div>
               
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-brand-purple text-white rounded-full flex items-center justify-center mb-4 text-xl font-bold">3</div>
-                <h3 className="text-xl font-display mb-2">Vive la experiencia</h3>
+              <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-8 text-center relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-brand-purple/5 rounded-full -mr-12 -mt-12"></div>
+                <div className="w-16 h-16 bg-brand-purple text-white rounded-full flex items-center justify-center mb-6 text-xl font-bold mx-auto relative z-10 group-hover:scale-110 transition-transform">3</div>
+                <h3 className="text-xl font-display mb-3 group-hover:text-brand-purple transition-colors">Vive la experiencia</h3>
                 <p className="text-gray-600">
                   Disfruta del espacio y comparte fotos para ayudar a la comunidad a crecer.
                 </p>
@@ -188,7 +192,9 @@ const Index = () => {
             
             <div className="mt-12 text-center">
               <Link to="/how-to-host">
-                <Button variant="outline">Saber más</Button>
+                <Button variant="outline" size="lg" className="rounded-full">
+                  Saber más
+                </Button>
               </Link>
             </div>
           </div>

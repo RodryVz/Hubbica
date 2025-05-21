@@ -11,7 +11,7 @@ import ScrollToTop from './ScrollToTop';
  * - Consistent layout structure across all pages
  * - Includes Navbar, main content area, Footer and ScrollToTop
  * - Responsive design for all screen sizes
- * - Supports theme transitions with smooth animations
+ * - Smooth transitions between pages
  */
 type LayoutProps = {
   children: React.ReactNode;

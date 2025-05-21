@@ -1,12 +1,20 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ArrowLeft, Users, Euro, Clock, BadgeCheck, MessageSquare } from 'lucide-react';
+import { ArrowLeft, Users, Clock, BadgeCheck, MessageSquare, X } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/ui/carousel";
 import { ALL_SPACES } from '@/pages/Spaces';
 import { Space } from '@/components/SpaceCard';
 import SpaceGallery from '@/components/SpaceGallery';
@@ -15,6 +23,8 @@ const SpaceDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [space, setSpace] = useState<Space | null>(null);
   const [loading, setLoading] = useState(true);
+  const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   useEffect(() => {
     // En un entorno real, esto sería una llamada a la API
@@ -22,6 +32,16 @@ const SpaceDetail = () => {
     setSpace(foundSpace || null);
     setLoading(false);
   }, [id]);
+
+  const openImageModal = (index: number) => {
+    setSelectedImageIndex(index);
+    setImageModalOpen(true);
+  };
+
+  // Handler para SpaceGallery
+  const handleImageClick = (index: number) => {
+    openImageModal(index);
+  };
 
   if (loading) {
     return (
@@ -54,6 +74,14 @@ const SpaceDetail = () => {
     );
   }
 
+  // Función para convertir Euro a Peso Argentino (tipo de cambio aproximado)
+  const eurToArs = (eurAmount: number) => {
+    const exchangeRate = 1200; // Tipo de cambio aproximado EUR a ARS
+    return Math.round(eurAmount * exchangeRate);
+  };
+
+  const priceInArs = eurToArs(space.pricePerHour);
+
   return (
     <Layout>
       <div className="container py-4 md:py-8">
@@ -67,8 +95,10 @@ const SpaceDetail = () => {
           </Button>
         </div>
         
-        {/* Galería de imágenes */}
-        <SpaceGallery images={space.images} title={space.name} />
+        {/* Galería de imágenes con click para abrir modal */}
+        <div onClick={() => handleImageClick(0)}>
+          <SpaceGallery images={space.images} title={space.name} onImageClick={handleImageClick} />
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-4 md:mt-8">
           {/* Información principal */}
@@ -90,7 +120,7 @@ const SpaceDetail = () => {
               <CardContent className="p-4 md:p-6">
                 <h2 className="text-lg md:text-xl font-medium mb-4">Ubicación</h2>
                 <p className="mb-1 font-medium">{space.neighborhood}</p>
-                <p className="text-gray-700">{space.city}, España</p>
+                <p className="text-gray-700">{space.city}, Argentina</p>
               </CardContent>
             </Card>
           </div>
@@ -99,7 +129,7 @@ const SpaceDetail = () => {
           <div>
             <div className="bg-white p-4 md:p-6 rounded-lg border border-gray-100 shadow-sm sticky top-24">
               <div className="flex justify-between items-center mb-4 md:mb-6">
-                <p className="text-xl md:text-2xl font-bold">{space.pricePerHour}€ <span className="text-sm font-normal">/hora</span></p>
+                <p className="text-xl md:text-2xl font-bold">ARS {priceInArs.toLocaleString()} <span className="text-sm font-normal">/hora</span></p>
                 <span className="flex items-center text-sm text-gray-500">
                   <Clock className="h-4 w-4 mr-1" />
                   Mín. 2 horas
@@ -129,6 +159,44 @@ const SpaceDetail = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal para galería de imágenes */}
+      <Dialog open={imageModalOpen} onOpenChange={setImageModalOpen}>
+        <DialogContent className="sm:max-w-5xl p-0 bg-black/95 border-none max-h-screen overflow-hidden" onClick={(e) => e.stopPropagation()}>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="absolute right-4 top-4 z-50 text-white bg-black/50 hover:bg-black/70 rounded-full"
+            onClick={() => setImageModalOpen(false)}
+          >
+            <X className="h-5 w-5" />
+          </Button>
+
+          <Carousel className="w-full px-4 py-6" defaultIndex={selectedImageIndex}>
+            <CarouselContent>
+              {space.images.map((image, index) => (
+                <CarouselItem key={index}>
+                  <div className="flex items-center justify-center h-[80vh]">
+                    <img 
+                      src={image} 
+                      alt={`${space.name} - imagen ${index + 1}`}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-6 text-white bg-black/50 hover:bg-black/70" />
+            <CarouselNext className="right-6 text-white bg-black/50 hover:bg-black/70" />
+          </Carousel>
+
+          <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center">
+            <div className="bg-black/70 px-4 py-2 rounded-full text-white text-sm">
+              {selectedImageIndex + 1} / {space.images.length}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };

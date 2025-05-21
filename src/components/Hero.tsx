@@ -3,9 +3,19 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import IntentSearch from './IntentSearch';
 
+/**
+ * Hero component - Main landing page hero section
+ * 
+ * Features:
+ * - Responsive layout for all devices
+ * - Background image with overlay
+ * - Intent-based search integration
+ * - Call-to-action buttons
+ * - Fade-in animation
+ */
 const Hero = () => {
   return (
-    <div className="relative overflow-hidden py-24 md:py-36">
+    <div className="relative overflow-hidden py-16 sm:py-24 md:py-32">
       {/* Background image with enhanced visibility */}
       <div className="absolute inset-0 -z-10">
         <img 
@@ -13,31 +23,31 @@ const Hero = () => {
           alt="Background" 
           className="w-full h-full object-cover object-center opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-white/60 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-white/60 dark:from-gray-900/80 dark:to-gray-900/70 backdrop-blur-[2px]"></div>
       </div>
       
       <div className="container max-w-5xl relative z-10">
-        <div className="text-center space-y-8 animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight">
+        <div className="text-center space-y-6 md:space-y-8 animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight">
             Espacios únicos para <span className="text-brand-purple">experiencias</span> inolvidables
           </h1>
           
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4 sm:px-0">
             Describe la experiencia que quieres crear y encuentra el espacio perfecto para hacerla realidad.
           </p>
           
-          <div className="w-full max-w-2xl mx-auto">
+          <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
             <IntentSearch />
           </div>
           
-          <div className="pt-4 flex flex-wrap gap-4 justify-center">
+          <div className="pt-4 flex flex-wrap gap-3 sm:gap-4 justify-center">
             <Link to="/spaces">
-              <Button variant="outline" className="rounded-full">
+              <Button variant="outline" className="rounded-full text-sm sm:text-base">
                 Explorar espacios
               </Button>
             </Link>
             <Link to="/how-to-host">
-              <Button className="rounded-full">
+              <Button className="rounded-full text-sm sm:text-base">
                 Publica tu espacio
               </Button>
             </Link>

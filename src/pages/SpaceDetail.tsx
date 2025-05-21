@@ -1,11 +1,12 @@
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ArrowLeft, Users, Euro, Clock, BadgeCheck } from 'lucide-react';
-import { MessageSquare } from 'lucide-react';
+import { ArrowLeft, Users, Euro, Clock, BadgeCheck, MessageSquare } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 import { ALL_SPACES } from '@/pages/Spaces';
 import { Space } from '@/components/SpaceCard';
 import SpaceGallery from '@/components/SpaceGallery';
@@ -55,9 +56,9 @@ const SpaceDetail = () => {
 
   return (
     <Layout>
-      <div className="container py-8">
+      <div className="container py-4 md:py-8">
         {/* Navegación */}
-        <div className="mb-6">
+        <div className="mb-4 md:mb-6">
           <Button variant="ghost" asChild className="px-0 -ml-3">
             <a href="/spaces">
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -69,7 +70,7 @@ const SpaceDetail = () => {
         {/* Galería de imágenes */}
         <SpaceGallery images={space.images} title={space.name} />
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-4 md:mt-8">
           {/* Información principal */}
           <div className="md:col-span-2">
             <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -78,21 +79,27 @@ const SpaceDetail = () => {
               ))}
             </div>
             
-            <h2 className="text-xl font-medium mb-2">Acerca de este espacio</h2>
-            <p className="text-gray-700 mb-8">{space.description}</p>
+            <Card className="mb-6">
+              <CardContent className="p-4 md:p-6">
+                <h2 className="text-lg md:text-xl font-medium mb-4">Acerca de este espacio</h2>
+                <p className="text-gray-700">{space.description}</p>
+              </CardContent>
+            </Card>
             
-            <Separator className="my-8" />
-            
-            <h2 className="text-xl font-medium mb-4">Ubicación</h2>
-            <p className="mb-1">{space.neighborhood}</p>
-            <p className="text-gray-700">{space.city}, España</p>
+            <Card className="mb-6">
+              <CardContent className="p-4 md:p-6">
+                <h2 className="text-lg md:text-xl font-medium mb-4">Ubicación</h2>
+                <p className="mb-1 font-medium">{space.neighborhood}</p>
+                <p className="text-gray-700">{space.city}, España</p>
+              </CardContent>
+            </Card>
           </div>
           
           {/* Sidebar con información de reserva */}
           <div>
-            <div className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm">
-              <div className="flex justify-between items-center mb-6">
-                <p className="text-2xl font-bold">{space.pricePerHour}€ <span className="text-sm font-normal">/hora</span></p>
+            <div className="bg-white p-4 md:p-6 rounded-lg border border-gray-100 shadow-sm sticky top-24">
+              <div className="flex justify-between items-center mb-4 md:mb-6">
+                <p className="text-xl md:text-2xl font-bold">{space.pricePerHour}€ <span className="text-sm font-normal">/hora</span></p>
                 <span className="flex items-center text-sm text-gray-500">
                   <Clock className="h-4 w-4 mr-1" />
                   Mín. 2 horas
@@ -100,15 +107,15 @@ const SpaceDetail = () => {
               </div>
               
               {space.revenueShare > 0 && (
-                <div className="bg-green-50 p-3 rounded-md flex items-center mb-6 text-green-800">
-                  <BadgeCheck className="h-5 w-5 mr-2" />
+                <div className="bg-green-50 p-3 rounded-md flex items-center mb-4 md:mb-6 text-green-800">
+                  <BadgeCheck className="h-5 w-5 mr-2 flex-shrink-0" />
                   <span className="text-sm">Opción de revenue share: {space.revenueShare}%</span>
                 </div>
               )}
               
-              <div className="mb-6">
+              <div className="mb-4 md:mb-6">
                 <div className="flex items-center mb-2 text-gray-700">
-                  <Users className="h-4 w-4 mr-2" />
+                  <Users className="h-4 w-4 mr-2 flex-shrink-0" />
                   <span>Hasta {space.capacity} personas</span>
                 </div>
               </div>

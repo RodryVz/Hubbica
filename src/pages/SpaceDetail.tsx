@@ -18,6 +18,7 @@ import {
 import { ALL_SPACES } from '@/pages/Spaces';
 import { Space } from '@/components/SpaceCard';
 import SpaceGallery from '@/components/SpaceGallery';
+import { useEffect as useEmblaEffect } from "embla-carousel-react";
 
 const SpaceDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,6 +26,7 @@ const SpaceDetail = () => {
   const [loading, setLoading] = useState(true);
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<any>(null);
 
   useEffect(() => {
     // En un entorno real, esto sería una llamada a la API
@@ -32,6 +34,13 @@ const SpaceDetail = () => {
     setSpace(foundSpace || null);
     setLoading(false);
   }, [id]);
+
+  // Efecto para controlar la imagen seleccionada en el carrusel
+  useEffect(() => {
+    if (carouselApi && imageModalOpen) {
+      carouselApi.scrollTo(selectedImageIndex);
+    }
+  }, [carouselApi, selectedImageIndex, imageModalOpen]);
 
   const openImageModal = (index: number) => {
     setSelectedImageIndex(index);
@@ -172,7 +181,7 @@ const SpaceDetail = () => {
             <X className="h-5 w-5" />
           </Button>
 
-          <Carousel className="w-full px-4 py-6" defaultIndex={selectedImageIndex}>
+          <Carousel className="w-full px-4 py-6" setApi={setCarouselApi}>
             <CarouselContent>
               {space.images.map((image, index) => (
                 <CarouselItem key={index}>

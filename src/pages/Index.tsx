@@ -5,6 +5,7 @@ import SpaceCard, { Space } from '@/components/SpaceCard';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
 import { ArrowRight } from 'lucide-react';
+import PromoBanner from '@/components/PromoBanner';
 
 // Mock data for featured spaces
 const FEATURED_SPACES: Space[] = [
@@ -103,6 +104,9 @@ const Index = () => {
     <Layout>
       <main className="flex-grow">
         <Hero />
+        
+        {/* Promotional Banner */}
+        <PromoBanner />
         
         {/* Featured spaces */}
         <section className="py-16 bg-gray-50">

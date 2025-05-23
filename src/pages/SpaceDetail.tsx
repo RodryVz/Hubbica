@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ArrowLeft, Users, Clock, BadgeCheck, MessageSquare, X } from 'lucide-react';
@@ -18,7 +17,6 @@ import {
 import { ALL_SPACES } from '@/pages/Spaces';
 import { Space } from '@/components/SpaceCard';
 import SpaceGallery from '@/components/SpaceGallery';
-import { useEffect as useEmblaEffect } from "embla-carousel-react";
 
 const SpaceDetail = () => {
   const { id } = useParams<{ id: string }>();

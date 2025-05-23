@@ -31,12 +31,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 py-4">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-4">
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-full bg-brand-purple text-white flex items-center justify-center font-display font-bold">E</div>
-          <span className="font-display text-xl tracking-tight">experiencias<span className="text-brand-purple">.space</span></span>
+          <div className="h-8 w-8 rounded-full bg-brand-purple text-white flex items-center justify-center font-display font-bold">H</div>
+          <span className="font-display text-xl tracking-tight">hub<span className="text-brand-purple">bica</span></span>
         </Link>
         
         {/* Desktop Navigation */}
@@ -81,7 +81,7 @@ const Navbar = () => {
                 <Link 
                   to="/spaces" 
                   className={`p-2 rounded-md text-lg font-medium transition-colors ${
-                    isActive('/spaces') ? 'bg-gray-100 dark:bg-gray-800 text-brand-purple' : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                    isActive('/spaces') ? 'bg-gray-100 text-brand-purple' : 'hover:bg-gray-100'
                   }`}
                   onClick={handleLinkClick}
                 >
@@ -90,7 +90,7 @@ const Navbar = () => {
                 <Link 
                   to="/how-to-host" 
                   className={`p-2 rounded-md text-lg font-medium transition-colors ${
-                    isActive('/how-to-host') ? 'bg-gray-100 dark:bg-gray-800 text-brand-purple' : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                    isActive('/how-to-host') ? 'bg-gray-100 text-brand-purple' : 'hover:bg-gray-100'
                   }`}
                   onClick={handleLinkClick}
                 >
@@ -99,17 +99,17 @@ const Navbar = () => {
                 <Link 
                   to="/how-to-host" 
                   className={`p-2 rounded-md text-lg font-medium transition-colors ${
-                    isActive('/publish') ? 'bg-gray-100 dark:bg-gray-800 text-brand-purple' : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                    isActive('/publish') ? 'bg-gray-100 text-brand-purple' : 'hover:bg-gray-100'
                   }`}
                   onClick={handleLinkClick}
                 >
                   Publica tu espacio
                 </Link>
                 
-                <div className="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4">
+                <div className="mt-4 border-t border-gray-200 pt-4">
                   <Link 
                     to="/search" 
-                    className="p-2 rounded-md flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="p-2 rounded-md flex items-center gap-2 hover:bg-gray-100"
                     onClick={handleLinkClick}
                   >
                     <Search className="h-4 w-4" />

@@ -1,10 +1,11 @@
 
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, Search, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeToggle from './ThemeToggle';
+import WhatsAppButton from './WhatsAppButton';
 
 /**
  * Navbar component - Provides site-wide navigation with responsive design
@@ -13,7 +14,7 @@ import ThemeToggle from './ThemeToggle';
  * - Responsive desktop and mobile navigation
  * - Active link highlighting
  * - Theme toggle integration
- * - Search functionality
+ * - WhatsApp contact button for CEO communication
  */
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,11 +60,17 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           <ThemeToggle />
           
-          <Link to="/search" className="hidden sm:inline-flex">
-            <Button variant="outline" size="icon" className="rounded-full">
-              <Search className="h-4 w-4" />
-            </Button>
-          </Link>
+          {/* WhatsApp contact button for CEO */}
+          <div className="hidden sm:inline-flex">
+            <WhatsAppButton 
+              phoneNumber="5491234567890"
+              message="Hola! Me gustaría obtener más información sobre Hubbica."
+              variant="outline"
+              size="icon"
+              className="rounded-full"
+              trackingSource="navbar"
+            />
+          </div>
           
           <Link to="/how-to-host" className="hidden sm:inline-flex">
             <Button className="rounded-full">Publica tu espacio</Button>
@@ -107,14 +114,16 @@ const Navbar = () => {
                 </Link>
                 
                 <div className="mt-4 border-t border-gray-200 pt-4">
-                  <Link 
-                    to="/search" 
-                    className="p-2 rounded-md flex items-center gap-2 hover:bg-gray-100"
+                  <WhatsAppButton 
+                    phoneNumber="5491234567890"
+                    message="Hola! Me gustaría obtener más información sobre Hubbica."
+                    variant="ghost"
+                    className="p-2 rounded-md flex items-center gap-2 hover:bg-gray-100 w-full justify-start"
+                    trackingSource="navbar-mobile"
                     onClick={handleLinkClick}
                   >
-                    <Search className="h-4 w-4" />
-                    <span>Buscar</span>
-                  </Link>
+                    Contactar CEO
+                  </WhatsAppButton>
                 </div>
               </div>
             </SheetContent>

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -19,7 +18,12 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import Layout from '@/components/Layout';
 
-// Mock data for spaces - exportamos para poder usarlo en el detalle de espacio
+/**
+ * CONFIGURABLE SECTION: Spaces Data
+ * 
+ * TO MODIFY: Replace this mock data with your actual API integration
+ * This should connect to your database or CMS to load real space data
+ */
 export const ALL_SPACES: Space[] = [
   {
     id: '1',
@@ -119,97 +123,147 @@ export const ALL_SPACES: Space[] = [
   },
 ];
 
-// Filter component for spaces
+/**
+ * OPTIMIZED FILTER SYSTEM
+ * 
+ * Enhanced filter component with improved user experience and functionality
+ */
 const SpaceFilters = ({
-  onFilterChange
+  onFilterChange,
+  totalResults
 }: {
   onFilterChange: (filters: any) => void;
+  totalResults: number;
 }) => {
   const [priceRange, setPriceRange] = useState([0, 200]);
   const [selectedCity, setSelectedCity] = useState("all");
   const [capacity, setCapacity] = useState("any");
   const [withRevenueShare, setWithRevenueShare] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   
+  // Apply filters automatically when values change
+  useEffect(() => {
+    handleApplyFilters();
+  }, [priceRange, selectedCity, capacity, withRevenueShare]);
+
   const handleApplyFilters = () => {
-    onFilterChange({
+    const filters = {
       priceRange,
       city: selectedCity === "all" ? "" : selectedCity,
       capacity: capacity === "any" ? null : parseInt(capacity),
       withRevenueShare,
-    });
+    };
+    onFilterChange(filters);
   };
 
+  const clearAllFilters = () => {
+    setPriceRange([0, 200]);
+    setSelectedCity("all");
+    setCapacity("any");
+    setWithRevenueShare(false);
+  };
+
+  const hasActiveFilters = selectedCity !== "all" || capacity !== "any" || withRevenueShare || 
+                          priceRange[0] !== 0 || priceRange[1] !== 200;
+
   return (
-    <div className="bg-white p-4 rounded-lg border border-gray-100 space-y-6">
-      <h3 className="font-medium">Filtros</h3>
+    <div className="bg-white p-4 md:p-6 rounded-lg border border-gray-100 shadow-sm">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="font-medium text-lg">Filtros</h3>
+        <span className="text-sm text-gray-500">{totalResults} espacios</span>
+      </div>
       
-      <div>
-        <p className="text-sm text-gray-500 mb-2">Precio por hora</p>
-        <div className="space-y-3">
-          <Slider 
-            defaultValue={priceRange}
-            min={0}
-            max={200}
-            step={10}
-            onValueChange={setPriceRange}
-          />
-          <div className="flex justify-between text-sm">
-            <span>${priceRange[0]}</span>
-            <span>${priceRange[1]}+</span>
+      {hasActiveFilters && (
+        <div className="mb-4">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={clearAllFilters}
+            className="w-full"
+          >
+            Limpiar filtros
+          </Button>
+        </div>
+      )}
+      
+      <div className="space-y-6">
+        {/* Price Range Filter */}
+        <div>
+          <p className="text-sm font-medium text-gray-700 mb-3">Precio por hora (EUR)</p>
+          <div className="space-y-3">
+            <Slider 
+              value={priceRange}
+              min={0}
+              max={200}
+              step={10}
+              onValueChange={setPriceRange}
+              className="w-full"
+            />
+            <div className="flex justify-between text-sm text-gray-600">
+              <span>€{priceRange[0]}</span>
+              <span>€{priceRange[1]}+</span>
+            </div>
           </div>
         </div>
+        
+        {/* City Filter */}
+        <div>
+          <p className="text-sm font-medium text-gray-700 mb-2">Ciudad</p>
+          <Select value={selectedCity} onValueChange={setSelectedCity}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Todas las ciudades" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Todas las ciudades</SelectItem>
+              <SelectItem value="Barcelona">Barcelona</SelectItem>
+              <SelectItem value="Madrid">Madrid</SelectItem>
+              <SelectItem value="Valencia">Valencia</SelectItem>
+              <SelectItem value="Sevilla">Sevilla</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        
+        {/* Capacity Filter */}
+        <div>
+          <p className="text-sm font-medium text-gray-700 mb-2">Capacidad</p>
+          <Select value={capacity} onValueChange={setCapacity}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Cualquier capacidad" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="any">Cualquier capacidad</SelectItem>
+              <SelectItem value="10">Hasta 10 personas</SelectItem>
+              <SelectItem value="30">Hasta 30 personas</SelectItem>
+              <SelectItem value="50">Hasta 50 personas</SelectItem>
+              <SelectItem value="100">Hasta 100 personas</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        
+        {/* Revenue Share Filter */}
+        <div className="flex items-center space-x-2">
+          <Checkbox 
+            id="revenue-share" 
+            checked={withRevenueShare}
+            onCheckedChange={setWithRevenueShare}
+          />
+          <Label htmlFor="revenue-share" className="text-sm cursor-pointer">
+            Con opción de revenue share
+          </Label>
+        </div>
       </div>
-      
-      <div>
-        <p className="text-sm text-gray-500 mb-2">Ciudad</p>
-        <Select value={selectedCity} onValueChange={setSelectedCity}>
-          <SelectTrigger>
-            <SelectValue placeholder="Todas las ciudades" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Todas las ciudades</SelectItem>
-            <SelectItem value="Barcelona">Barcelona</SelectItem>
-            <SelectItem value="Madrid">Madrid</SelectItem>
-            <SelectItem value="Valencia">Valencia</SelectItem>
-            <SelectItem value="Sevilla">Sevilla</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      
-      <div>
-        <p className="text-sm text-gray-500 mb-2">Capacidad</p>
-        <Select value={capacity} onValueChange={setCapacity}>
-          <SelectTrigger>
-            <SelectValue placeholder="Cualquier capacidad" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="any">Cualquier capacidad</SelectItem>
-            <SelectItem value="10">Hasta 10 personas</SelectItem>
-            <SelectItem value="30">Hasta 30 personas</SelectItem>
-            <SelectItem value="50">Hasta 50 personas</SelectItem>
-            <SelectItem value="100">Hasta 100 personas</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      
-      <div className="flex items-center space-x-2">
-        <Checkbox 
-          id="revenue-share" 
-          checked={withRevenueShare}
-          onCheckedChange={() => setWithRevenueShare(!withRevenueShare)}
-        />
-        <Label htmlFor="revenue-share" className="text-sm">
-          Con opción de revenue share
-        </Label>
-      </div>
-      
-      <Button onClick={handleApplyFilters} className="w-full">
-        Aplicar filtros
-      </Button>
     </div>
   );
 };
 
+/**
+ * Main Spaces Component
+ * 
+ * INTEGRATION POINTS:
+ * - Replace ALL_SPACES with API call to load real data
+ * - Add pagination for large datasets
+ * - Integrate with analytics for user behavior tracking
+ */
 const Spaces = () => {
   const [searchParams] = useSearchParams();
   const intentQuery = searchParams.get('intent');
@@ -219,7 +273,7 @@ const Spaces = () => {
   const [spaces, setSpaces] = useState<Space[]>(ALL_SPACES);
   const [filteredSpaces, setFilteredSpaces] = useState<Space[]>(ALL_SPACES);
   
-  // Filtrar por tags al cargar la página
+  // Filter by URL parameters on page load
   useEffect(() => {
     if (tagsQuery) {
       const targetTags = tagsQuery.split(',');
@@ -233,7 +287,7 @@ const Spaces = () => {
       );
       setFilteredSpaces(filtered);
     } else if (categoryQuery) {
-      // Filtrar por categoría específica
+      // Filter by specific category
       const categoryTagMap: { [key: string]: string[] } = {
         'talleres': ['Industrial', 'Taller', 'Creativo'],
         'eventos': ['Terraza', 'Vistas', 'Bar', 'Eventos', 'Galería', 'Arte'],
@@ -259,13 +313,53 @@ const Spaces = () => {
     }
   }, [tagsQuery, categoryQuery]);
   
+  /**
+   * OPTIMIZED FILTER HANDLER
+   * Enhanced filtering with proper validation and performance
+   */
   const handleFilterChange = (filters: any) => {
-    // In a real implementation, this would call an API with the filters
-    // For now, we'll filter the mock data
-    const filtered = ALL_SPACES.filter(space => {
-      // Price filter
-      if (space.pricePerHour < filters.priceRange[0] || space.pricePerHour > filters.priceRange[1]) {
-        return false;
+    let filtered = [...ALL_SPACES];
+    
+    // Apply URL-based filters first
+    if (tagsQuery) {
+      const targetTags = tagsQuery.split(',');
+      filtered = filtered.filter(space => 
+        space.tags.some(tag => 
+          targetTags.some(targetTag => 
+            tag.toLowerCase().includes(targetTag.toLowerCase()) ||
+            targetTag.toLowerCase().includes(tag.toLowerCase())
+          )
+        )
+      );
+    } else if (categoryQuery) {
+      const categoryTagMap: { [key: string]: string[] } = {
+        'talleres': ['Industrial', 'Taller', 'Creativo'],
+        'eventos': ['Terraza', 'Vistas', 'Bar', 'Eventos', 'Galería', 'Arte'],
+        'gastronomia': ['Cocina', 'Loft', 'Cenas'],
+        'bienestar': ['Yoga', 'Jardín', 'Wellness'],
+        'musica': ['Música', 'Acústica', 'Estudio']
+      };
+      
+      const categoryTags = categoryTagMap[categoryQuery] || [];
+      if (categoryTags.length > 0) {
+        filtered = filtered.filter(space => 
+          space.tags.some(tag => 
+            categoryTags.some(categoryTag => 
+              tag.toLowerCase().includes(categoryTag.toLowerCase()) ||
+              categoryTag.toLowerCase().includes(tag.toLowerCase())
+            )
+          )
+        );
+      }
+    }
+    
+    // Apply additional filters
+    filtered = filtered.filter(space => {
+      // Price filter (with proper validation)
+      if (filters.priceRange && Array.isArray(filters.priceRange)) {
+        if (space.pricePerHour < filters.priceRange[0] || space.pricePerHour > filters.priceRange[1]) {
+          return false;
+        }
       }
       
       // City filter
@@ -273,8 +367,8 @@ const Spaces = () => {
         return false;
       }
       
-      // Capacity filter
-      if (filters.capacity && space.capacity > filters.capacity) {
+      // Capacity filter (greater than or equal to required capacity)
+      if (filters.capacity && space.capacity < filters.capacity) {
         return false;
       }
       
@@ -291,10 +385,11 @@ const Spaces = () => {
 
   return (
     <Layout>
-      <main className="flex-grow py-8">
+      <main className="flex-grow py-4 md:py-8">
         <div className="container">
-          <div className="mb-8">
-            <h1 className="text-3xl font-display font-bold mb-4">
+          {/* Header Section */}
+          <div className="mb-6 md:mb-8">
+            <h1 className="text-2xl md:text-3xl font-display font-bold mb-4">
               {intentQuery 
                 ? `Espacios para "${intentQuery}"` 
                 : categoryQuery 
@@ -307,25 +402,48 @@ const Spaces = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-12 gap-6">
-            {/* Sidebar filters */}
-            <div className="col-span-12 md:col-span-3">
-              <SpaceFilters onFilterChange={handleFilterChange} />
+          {/* Main Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {/* Sidebar Filters - Responsive */}
+            <div className="lg:col-span-1">
+              <div className="lg:sticky lg:top-24">
+                <SpaceFilters 
+                  onFilterChange={handleFilterChange} 
+                  totalResults={filteredSpaces.length}
+                />
+              </div>
             </div>
             
-            {/* Main content */}
-            <div className="col-span-12 md:col-span-9">
+            {/* Main Content Area */}
+            <div className="lg:col-span-3">
               {filteredSpaces.length === 0 ? (
-                <div className="text-center py-12">
-                  <h3 className="font-medium mb-2">No se encontraron espacios</h3>
-                  <p className="text-gray-500">Intenta cambiar los filtros o la búsqueda</p>
+                <div className="text-center py-12 bg-white rounded-lg border border-gray-100">
+                  <div className="max-w-md mx-auto">
+                    <h3 className="text-lg font-medium mb-2">No se encontraron espacios</h3>
+                    <p className="text-gray-500 mb-4">
+                      Intenta cambiar los filtros o realizar una nueva búsqueda
+                    </p>
+                    <Button variant="outline" onClick={() => window.location.href = '/spaces'}>
+                      Ver todos los espacios
+                    </Button>
+                  </div>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredSpaces.map((space) => (
-                    <SpaceCard key={space.id} space={space} />
-                  ))}
-                </div>
+                <>
+                  {/* Results Summary */}
+                  <div className="flex justify-between items-center mb-6">
+                    <p className="text-sm text-gray-600">
+                      {filteredSpaces.length} espacios encontrados
+                    </p>
+                  </div>
+                  
+                  {/* Spaces Grid - Responsive */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+                    {filteredSpaces.map((space) => (
+                      <SpaceCard key={space.id} space={space} />
+                    ))}
+                  </div>
+                </>
               )}
             </div>
           </div>

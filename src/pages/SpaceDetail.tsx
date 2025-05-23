@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ArrowLeft, Users, Clock, BadgeCheck, MessageSquare, X } from 'lucide-react';
+import { ArrowLeft, Users, Clock, BadgeCheck, X } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -18,6 +18,7 @@ import {
 import { ALL_SPACES } from '@/pages/Spaces';
 import { Space } from '@/components/SpaceCard';
 import SpaceGallery from '@/components/SpaceGallery';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 /**
  * CONFIGURABLE SECTION: Space Detail Page
@@ -29,6 +30,7 @@ import SpaceGallery from '@/components/SpaceGallery';
  * - To change data source: Update the useEffect hook that loads space data
  * - To change layout: Modify the JSX structure below
  * - To change pricing conversion: Update the eurToArs function
+ * - To modify contact phone: Update the phoneNumber in WhatsAppButton
  */
 
 /**
@@ -40,7 +42,7 @@ import SpaceGallery from '@/components/SpaceGallery';
  * - Location
  * - Pricing
  * - Capacity
- * - Reservation options
+ * - WhatsApp contact with tracking
  */
 const SpaceDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -206,12 +208,20 @@ const SpaceDetail = () => {
                 </div>
               </div>
               
-              {/* INTEGRATION POINT: Booking buttons */}
-              <Button className="w-full mb-3">Reservar</Button>
-              <Button variant="outline" className="w-full">
-                <MessageSquare className="h-4 w-4 mr-2" />
-                Contactar al anfitrión
-              </Button>
+              {/* INTEGRATION POINT: WhatsApp Contact Button with Tracking */}
+              <WhatsAppButton
+                phoneNumber="5491234567890" // CONFIGURABLE: Replace with actual host phone
+                message="Me interesa este espacio para un evento."
+                trackingSource="space_detail"
+                spaceName={space.name}
+                className="w-full bg-green-600 hover:bg-green-700 text-white"
+              >
+                Contactar anfitrión
+              </WhatsAppButton>
+              
+              <p className="text-xs text-gray-500 mt-2 text-center">
+                Te redirigiremos a WhatsApp para contactar directamente
+              </p>
             </div>
           </div>
         </div>

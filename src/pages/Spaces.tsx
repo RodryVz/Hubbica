@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -213,9 +214,50 @@ const Spaces = () => {
   const [searchParams] = useSearchParams();
   const intentQuery = searchParams.get('intent');
   const categoryQuery = searchParams.get('category');
+  const tagsQuery = searchParams.get('tags');
   
   const [spaces, setSpaces] = useState<Space[]>(ALL_SPACES);
   const [filteredSpaces, setFilteredSpaces] = useState<Space[]>(ALL_SPACES);
+  
+  // Filtrar por tags al cargar la página
+  useEffect(() => {
+    if (tagsQuery) {
+      const targetTags = tagsQuery.split(',');
+      const filtered = ALL_SPACES.filter(space => 
+        space.tags.some(tag => 
+          targetTags.some(targetTag => 
+            tag.toLowerCase().includes(targetTag.toLowerCase()) ||
+            targetTag.toLowerCase().includes(tag.toLowerCase())
+          )
+        )
+      );
+      setFilteredSpaces(filtered);
+    } else if (categoryQuery) {
+      // Filtrar por categoría específica
+      const categoryTagMap: { [key: string]: string[] } = {
+        'talleres': ['Industrial', 'Taller', 'Creativo'],
+        'eventos': ['Terraza', 'Vistas', 'Bar', 'Eventos', 'Galería', 'Arte'],
+        'gastronomia': ['Cocina', 'Loft', 'Cenas'],
+        'bienestar': ['Yoga', 'Jardín', 'Wellness'],
+        'musica': ['Música', 'Acústica', 'Estudio']
+      };
+      
+      const categoryTags = categoryTagMap[categoryQuery] || [];
+      if (categoryTags.length > 0) {
+        const filtered = ALL_SPACES.filter(space => 
+          space.tags.some(tag => 
+            categoryTags.some(categoryTag => 
+              tag.toLowerCase().includes(categoryTag.toLowerCase()) ||
+              categoryTag.toLowerCase().includes(tag.toLowerCase())
+            )
+          )
+        );
+        setFilteredSpaces(filtered);
+      }
+    } else {
+      setFilteredSpaces(ALL_SPACES);
+    }
+  }, [tagsQuery, categoryQuery]);
   
   const handleFilterChange = (filters: any) => {
     // In a real implementation, this would call an API with the filters

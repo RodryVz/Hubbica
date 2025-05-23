@@ -61,11 +61,11 @@ const PromoBanner = () => {
   };
 
   return (
-    <div className="relative overflow-hidden mx-auto my-8">
+    <div className="relative overflow-hidden mx-auto my-8 max-w-7xl px-4">
       <Button 
         variant="ghost" 
         size="icon" 
-        className="absolute top-4 right-4 rounded-full z-20 bg-white/80 backdrop-blur-sm hover:bg-white/90" 
+        className="absolute top-4 right-8 rounded-full z-20 bg-white/80 backdrop-blur-sm hover:bg-white/90" 
         onClick={() => setIsOpen(false)}
       >
         <X size={16} />
@@ -127,14 +127,14 @@ const PromoBanner = () => {
             <>
               <button
                 onClick={(e) => { e.preventDefault(); prevSlide(); }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
+                className="absolute left-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
               >
                 <ChevronLeft className="h-6 w-6 text-white" />
               </button>
               
               <button
                 onClick={(e) => { e.preventDefault(); nextSlide(); }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
+                className="absolute right-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
               >
                 <ChevronRight className="h-6 w-6 text-white" />
               </button>

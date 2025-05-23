@@ -6,11 +6,54 @@ import { Input } from '@/components/ui/input';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
 
+// Mapeo de términos de búsqueda a tags
+const SEARCH_TAG_MAPPING: { [key: string]: string[] } = {
+  'cumpleaños': ['Terraza', 'Vistas', 'Bar', 'Eventos'],
+  'cumpleanos': ['Terraza', 'Vistas', 'Bar', 'Eventos'],
+  'fiesta': ['Terraza', 'Vistas', 'Bar', 'Eventos'],
+  'celebración': ['Terraza', 'Vistas', 'Bar', 'Eventos'],
+  'celebracion': ['Terraza', 'Vistas', 'Bar', 'Eventos'],
+  'taller': ['Industrial', 'Taller', 'Creativo'],
+  'talleres': ['Industrial', 'Taller', 'Creativo'],
+  'workshop': ['Industrial', 'Taller', 'Creativo'],
+  'workshops': ['Industrial', 'Taller', 'Creativo'],
+  'coworking': ['Industrial', 'Taller', 'Creativo'],
+  'trabajo': ['Industrial', 'Taller', 'Creativo'],
+  'presentación': ['Industrial', 'Taller', 'Creativo'],
+  'presentacion': ['Industrial', 'Taller', 'Creativo'],
+  'cena': ['Cocina', 'Loft', 'Cenas'],
+  'cenas': ['Cocina', 'Loft', 'Cenas'],
+  'cocina': ['Cocina', 'Loft', 'Cenas'],
+  'gastronomía': ['Cocina', 'Loft', 'Cenas'],
+  'gastronomia': ['Cocina', 'Loft', 'Cenas'],
+  'evento gastronómico': ['Cocina', 'Loft', 'Cenas'],
+  'evento gastronomico': ['Cocina', 'Loft', 'Cenas'],
+  'yoga': ['Yoga', 'Jardín', 'Wellness'],
+  'meditación': ['Yoga', 'Jardín', 'Wellness'],
+  'meditacion': ['Yoga', 'Jardín', 'Wellness'],
+  'wellness': ['Yoga', 'Jardín', 'Wellness'],
+  'bienestar': ['Yoga', 'Jardín', 'Wellness'],
+  'relajación': ['Yoga', 'Jardín', 'Wellness'],
+  'relajacion': ['Yoga', 'Jardín', 'Wellness'],
+  'galería': ['Galería', 'Arte', 'Eventos'],
+  'galeria': ['Galería', 'Arte', 'Eventos'],
+  'arte': ['Galería', 'Arte', 'Eventos'],
+  'exposición': ['Galería', 'Arte', 'Eventos'],
+  'exposicion': ['Galería', 'Arte', 'Eventos'],
+  'música': ['Música', 'Acústica', 'Estudio'],
+  'musica': ['Música', 'Acústica', 'Estudio'],
+  'concierto': ['Música', 'Acústica', 'Estudio'],
+  'ensayo': ['Música', 'Acústica', 'Estudio'],
+  'grabación': ['Música', 'Acústica', 'Estudio'],
+  'grabacion': ['Música', 'Acústica', 'Estudio']
+};
+
 /**
- * IntentSearch component - Intent-based search input with animated feedback
+ * IntentSearch component - Intent-based search input with tag mapping
  * 
  * Features:
  * - Clean, minimal search interface
+ * - Maps search terms to relevant tags
  * - Visual feedback during search
  * - Error handling for empty searches
  * - Navigates to results page on submission
@@ -26,11 +69,28 @@ const IntentSearch = () => {
     if (searchIntent) {
       setIsSearching(true);
       
-      // Simular un pequeño retraso para dar feedback al usuario
+      // Buscar tags relacionados con la intención
+      const searchLower = searchIntent.toLowerCase();
+      let matchedTags: string[] = [];
+      
+      // Buscar coincidencias exactas primero
+      for (const [key, tags] of Object.entries(SEARCH_TAG_MAPPING)) {
+        if (searchLower.includes(key)) {
+          matchedTags = [...matchedTags, ...tags];
+        }
+      }
+      
+      // Eliminar duplicados
+      matchedTags = [...new Set(matchedTags)];
+      
       setTimeout(() => {
         setIsSearching(false);
-        // En una implementación real, enviaríamos esto a nuestro servicio AI
-        navigate(`/spaces?intent=${encodeURIComponent(searchIntent)}`);
+        
+        if (matchedTags.length > 0) {
+          navigate(`/spaces?intent=${encodeURIComponent(searchIntent)}&tags=${encodeURIComponent(matchedTags.join(','))}`);
+        } else {
+          navigate(`/spaces?intent=${encodeURIComponent(searchIntent)}`);
+        }
         
         toast({
           title: "Búsqueda iniciada",

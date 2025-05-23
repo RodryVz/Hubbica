@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ArrowLeft, Users, Clock, BadgeCheck, MessageSquare, X } from 'lucide-react';
@@ -18,6 +19,29 @@ import { ALL_SPACES } from '@/pages/Spaces';
 import { Space } from '@/components/SpaceCard';
 import SpaceGallery from '@/components/SpaceGallery';
 
+/**
+ * CONFIGURABLE SECTION: Space Detail Page
+ * 
+ * This page displays detailed information about a specific space.
+ * It fetches space data based on the URL parameter and displays it.
+ * 
+ * TO MODIFY:
+ * - To change data source: Update the useEffect hook that loads space data
+ * - To change layout: Modify the JSX structure below
+ * - To change pricing conversion: Update the eurToArs function
+ */
+
+/**
+ * SpaceDetail component
+ * 
+ * Displays comprehensive information about a single space including:
+ * - Image gallery
+ * - Description
+ * - Location
+ * - Pricing
+ * - Capacity
+ * - Reservation options
+ */
 const SpaceDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [space, setSpace] = useState<Space | null>(null);
@@ -26,14 +50,24 @@ const SpaceDetail = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<any>(null);
 
+  /**
+   * INTEGRATION POINT: Fetch space data
+   * 
+   * Replace this effect with your actual data fetching logic.
+   * Currently using mock data from ALL_SPACES, but should be replaced
+   * with an API call in a production environment.
+   */
   useEffect(() => {
-    // En un entorno real, esto sería una llamada a la API
+    // In a real implementation, this would be an API call
     const foundSpace = ALL_SPACES.find(s => s.id === id);
     setSpace(foundSpace || null);
     setLoading(false);
+    
+    // Log for debugging
+    console.log('Space data loaded:', foundSpace);
   }, [id]);
 
-  // Efecto para controlar la imagen seleccionada en el carrusel
+  // Effect to control selected image in carousel
   useEffect(() => {
     if (carouselApi && imageModalOpen) {
       carouselApi.scrollTo(selectedImageIndex);
@@ -45,11 +79,15 @@ const SpaceDetail = () => {
     setImageModalOpen(true);
   };
 
-  // Handler para SpaceGallery
+  // Handler for SpaceGallery
   const handleImageClick = (index: number) => {
     openImageModal(index);
   };
 
+  /**
+   * LOADING STATE
+   * Displays a skeleton UI while data is loading
+   */
   if (loading) {
     return (
       <Layout>
@@ -67,6 +105,10 @@ const SpaceDetail = () => {
     );
   }
 
+  /**
+   * NOT FOUND STATE
+   * Displayed when no space matches the requested ID
+   */
   if (!space) {
     return (
       <Layout>
@@ -81,9 +123,15 @@ const SpaceDetail = () => {
     );
   }
 
-  // Función para convertir Euro a Peso Argentino (tipo de cambio aproximado)
+  /**
+   * PRICE CONVERSION
+   * 
+   * This function converts Euro prices to Argentine Pesos.
+   * Update the exchange rate as needed or replace with a dynamic rate.
+   */
   const eurToArs = (eurAmount: number) => {
-    const exchangeRate = 1200; // Tipo de cambio aproximado EUR a ARS
+    // CONFIGURABLE: Update this exchange rate as needed
+    const exchangeRate = 1200; // Approximate EUR to ARS exchange rate
     return Math.round(eurAmount * exchangeRate);
   };
 
@@ -92,7 +140,7 @@ const SpaceDetail = () => {
   return (
     <Layout>
       <div className="container py-4 md:py-8">
-        {/* Navegación */}
+        {/* Navigation back to spaces */}
         <div className="mb-4 md:mb-6">
           <Button variant="ghost" asChild className="px-0 -ml-3">
             <a href="/spaces">
@@ -102,13 +150,14 @@ const SpaceDetail = () => {
           </Button>
         </div>
         
-        {/* Galería de imágenes con click para abrir modal */}
-        <div onClick={() => handleImageClick(0)}>
+        {/* Image Gallery */}
+        <div onClick={() => handleImageClick(0)} className="cursor-pointer">
           <SpaceGallery images={space.images} title={space.name} onImageClick={handleImageClick} />
         </div>
         
+        {/* Main content grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-4 md:mt-8">
-          {/* Información principal */}
+          {/* Information section */}
           <div className="md:col-span-2">
             <div className="flex flex-wrap items-center gap-2 mb-4">
               {space.tags.map((tag, index) => (
@@ -132,7 +181,7 @@ const SpaceDetail = () => {
             </Card>
           </div>
           
-          {/* Sidebar con información de reserva */}
+          {/* Sidebar with booking information */}
           <div>
             <div className="bg-white p-4 md:p-6 rounded-lg border border-gray-100 shadow-sm sticky top-24">
               <div className="flex justify-between items-center mb-4 md:mb-6">
@@ -157,6 +206,7 @@ const SpaceDetail = () => {
                 </div>
               </div>
               
+              {/* INTEGRATION POINT: Booking buttons */}
               <Button className="w-full mb-3">Reservar</Button>
               <Button variant="outline" className="w-full">
                 <MessageSquare className="h-4 w-4 mr-2" />
@@ -167,7 +217,7 @@ const SpaceDetail = () => {
         </div>
       </div>
 
-      {/* Modal para galería de imágenes */}
+      {/* Image Gallery Modal */}
       <Dialog open={imageModalOpen} onOpenChange={setImageModalOpen}>
         <DialogContent className="sm:max-w-5xl p-0 bg-black/95 border-none max-h-screen overflow-hidden" onClick={(e) => e.stopPropagation()}>
           <Button 

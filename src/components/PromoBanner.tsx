@@ -4,6 +4,21 @@ import { Link } from 'react-router-dom';
 import { X, ChevronLeft, ChevronRight, Sparkles, MessageCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
+/**
+ * CONFIGURABLE SECTION: Promotional Items
+ * 
+ * This is where you define the promotional banners that will be displayed.
+ * To add or modify promotions, edit this array.
+ * 
+ * Each promotion should have:
+ * - id: Unique identifier
+ * - title: Main promotional heading
+ * - description: Short description text
+ * - discount: Highlight text (e.g. "20% OFF")
+ * - image: Background image URL
+ * - venue: Type of venue or location
+ * - link: Where clicking the promo should navigate to
+ */
 type PromoItem = {
   id: string;
   title: string;
@@ -44,6 +59,16 @@ const PROMO_ITEMS: PromoItem[] = [
   }
 ];
 
+/**
+ * PromoBanner component - Promotional carousel banner
+ * 
+ * This component displays a carousel of promotional items with navigation controls.
+ * 
+ * TO MODIFY:
+ * - To change promotions: Edit the PROMO_ITEMS array above
+ * - To change the layout/design: Update the JSX structure below
+ * - To change behavior: Modify the state and navigation functions
+ */
 const PromoBanner = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -61,33 +86,35 @@ const PromoBanner = () => {
   };
 
   return (
-    <div className="relative overflow-hidden mx-auto my-8 max-w-7xl px-4">
+    <div className="relative overflow-hidden mx-auto my-8 max-w-6xl px-4">
       <Button 
         variant="ghost" 
         size="icon" 
         className="absolute top-4 right-8 rounded-full z-20 bg-white/80 backdrop-blur-sm hover:bg-white/90" 
         onClick={() => setIsOpen(false)}
+        aria-label="Cerrar promoción"
       >
         <X size={16} />
       </Button>
       
-      <Link to="/promos" className="block group">
+      <Link to={currentPromo.link} className="block group">
         <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
           {/* Background Image */}
           <div 
             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
             style={{ backgroundImage: `url(${currentPromo.image})` }}
+            aria-hidden="true"
           />
           
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" aria-hidden="true" />
           
           {/* Content */}
           <div className="relative z-10 h-full flex items-center">
-            <div className="container">
-              <div className="max-w-2xl">
+            <div className="container max-w-5xl">
+              <div className="max-w-2xl px-4 sm:px-0">
                 <div className="flex items-center gap-2 mb-4">
-                  <Sparkles size={24} className="text-brand-orange" />
+                  <Sparkles size={24} className="text-brand-orange" aria-hidden="true" />
                   <span className="text-white/80 font-medium">Promociones exclusivas hubbica</span>
                 </div>
                 
@@ -110,7 +137,7 @@ const PromoBanner = () => {
                     size="lg" 
                     className="rounded-full bg-brand-purple hover:bg-brand-deep-purple group-hover:scale-105 transition-all duration-300"
                   >
-                    <MessageCircle className="mr-2 h-5 w-5" />
+                    <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
                     Ver promociones
                   </Button>
                   
@@ -128,15 +155,17 @@ const PromoBanner = () => {
               <button
                 onClick={(e) => { e.preventDefault(); prevSlide(); }}
                 className="absolute left-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
+                aria-label="Promoción anterior"
               >
-                <ChevronLeft className="h-6 w-6 text-white" />
+                <ChevronLeft className="h-6 w-6 text-white" aria-hidden="true" />
               </button>
               
               <button
                 onClick={(e) => { e.preventDefault(); nextSlide(); }}
                 className="absolute right-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
+                aria-label="Promoción siguiente"
               >
-                <ChevronRight className="h-6 w-6 text-white" />
+                <ChevronRight className="h-6 w-6 text-white" aria-hidden="true" />
               </button>
             </>
           )}
@@ -153,6 +182,8 @@ const PromoBanner = () => {
                       ? 'bg-white scale-110' 
                       : 'bg-white/50 hover:bg-white/70'
                   }`}
+                  aria-label={`Ver promoción ${index + 1}`}
+                  aria-current={index === currentIndex ? 'true' : 'false'}
                 />
               ))}
             </div>

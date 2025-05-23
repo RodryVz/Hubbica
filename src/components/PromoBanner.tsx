@@ -1,15 +1,8 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { X, ChevronRight, Sparkles, Tag } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Sparkles, MessageCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { 
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious
-} from "@/components/ui/carousel";
 
 type PromoItem = {
   id: string;
@@ -24,110 +17,148 @@ type PromoItem = {
 const PROMO_ITEMS: PromoItem[] = [
   {
     id: "promo1",
-    title: "Descuentos en salones premium",
-    description: "20% off en salones de eventos para cumpleaños y celebraciones",
+    title: "Descuentos exclusivos en salones premium",
+    description: "20% off en salones de eventos para cumpleaños y celebraciones. Solo disponible reservando a través de hubbica.",
     discount: "20% OFF",
     image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-    venue: "Varios salones",
-    link: "/spaces?category=parties"
+    venue: "Salones Premium",
+    link: "/promos"
   },
   {
     id: "promo2",
-    title: "Espacios para workshops",
-    description: "15% off en espacios para talleres y eventos formativos",
+    title: "Espacios para workshops con precios especiales",
+    description: "15% off en espacios para talleres y eventos formativos. Oferta exclusiva para usuarios de hubbica.",
     discount: "15% OFF",
     image: "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
     venue: "Co-works selectos",
-    link: "/spaces?category=workshops"
+    link: "/promos"
   },
   {
     id: "promo3",
-    title: "Happy hour extendido",
-    description: "Bares con happy hour extendido exclusivo para reservas por hubbica",
+    title: "Happy hour extendido exclusivo",
+    description: "Bares con happy hour extendido solo para reservas por hubbica. ¡No te lo pierdas!",
     discount: "2x1",
     image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
     venue: "Bares seleccionados",
-    link: "/spaces?category=bars"
+    link: "/promos"
   }
 ];
 
 const PromoBanner = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [expandedPromo, setExpandedPromo] = useState<string | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   if (!isOpen) return null;
 
+  const currentPromo = PROMO_ITEMS[currentIndex];
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % PROMO_ITEMS.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + PROMO_ITEMS.length) % PROMO_ITEMS.length);
+  };
+
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-brand-purple/10 to-brand-orange/10 py-6 mx-auto my-8 rounded-xl">
+    <div className="relative overflow-hidden mx-auto my-8">
       <Button 
         variant="ghost" 
         size="icon" 
-        className="absolute top-2 right-2 rounded-full z-10" 
+        className="absolute top-4 right-4 rounded-full z-20 bg-white/80 backdrop-blur-sm hover:bg-white/90" 
         onClick={() => setIsOpen(false)}
       >
         <X size={16} />
       </Button>
       
-      <div className="container">
-        <div className="flex items-center gap-2 mb-4">
-          <Sparkles size={20} className="text-brand-purple" />
-          <h2 className="text-lg font-display font-bold">Promociones exclusivas</h2>
-        </div>
-        
-        <Carousel className="w-full">
-          <CarouselContent>
-            {PROMO_ITEMS.map((promo) => (
-              <CarouselItem key={promo.id} className="md:basis-1/2 lg:basis-1/3">
-                <div
-                  className={`group h-full bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm transition-all hover:shadow-md ${
-                    expandedPromo === promo.id ? 'shadow-md' : ''
-                  }`}
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={promo.image} 
-                      alt={promo.title} 
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
-                    />
-                    <div className="absolute top-3 right-3 bg-brand-purple text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                      {promo.discount}
-                    </div>
-                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                      <h3 className="text-white font-medium">{promo.title}</h3>
-                      <p className="text-white/80 text-sm">{promo.venue}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="p-4">
-                    <p className="text-sm text-gray-600 line-clamp-2">{promo.description}</p>
-                    <div className="mt-3 flex items-center justify-end">
-                      <Link to={promo.link}>
-                        <Button size="sm" variant="outline" className="rounded-full group">
-                          Ver oferta
-                          <ChevronRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
+      <Link to="/promos" className="block group">
+        <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+            style={{ backgroundImage: `url(${currentPromo.image})` }}
+          />
+          
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+          
+          {/* Content */}
+          <div className="relative z-10 h-full flex items-center">
+            <div className="container">
+              <div className="max-w-2xl">
+                <div className="flex items-center gap-2 mb-4">
+                  <Sparkles size={24} className="text-brand-orange" />
+                  <span className="text-white/80 font-medium">Promociones exclusivas hubbica</span>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="hidden md:block">
-            <CarouselPrevious className="left-2" />
-            <CarouselNext className="right-2" />
+                
+                <div className="mb-4">
+                  <span className="inline-block bg-brand-purple text-white px-4 py-2 rounded-full text-lg font-bold shadow-lg mb-4">
+                    {currentPromo.discount}
+                  </span>
+                </div>
+                
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4 leading-tight">
+                  {currentPromo.title}
+                </h2>
+                
+                <p className="text-white/90 text-lg mb-6 leading-relaxed">
+                  {currentPromo.description}
+                </p>
+                
+                <div className="flex items-center gap-4">
+                  <Button 
+                    size="lg" 
+                    className="rounded-full bg-brand-purple hover:bg-brand-deep-purple group-hover:scale-105 transition-all duration-300"
+                  >
+                    <MessageCircle className="mr-2 h-5 w-5" />
+                    Ver promociones
+                  </Button>
+                  
+                  <span className="text-white/70 text-sm">
+                    {currentPromo.venue}
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
-        </Carousel>
-        
-        <div className="flex justify-center mt-4">
-          <Link to="/promos">
-            <Button variant="link" size="sm" className="text-brand-purple gap-1">
-              Ver todas las promociones
-              <ChevronRight size={16} />
-            </Button>
-          </Link>
+          
+          {/* Navigation Controls */}
+          {PROMO_ITEMS.length > 1 && (
+            <>
+              <button
+                onClick={(e) => { e.preventDefault(); prevSlide(); }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
+              >
+                <ChevronLeft className="h-6 w-6 text-white" />
+              </button>
+              
+              <button
+                onClick={(e) => { e.preventDefault(); nextSlide(); }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
+              >
+                <ChevronRight className="h-6 w-6 text-white" />
+              </button>
+            </>
+          )}
+          
+          {/* Dots Indicator */}
+          {PROMO_ITEMS.length > 1 && (
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+              {PROMO_ITEMS.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => { e.preventDefault(); setCurrentIndex(index); }}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'bg-white scale-110' 
+                      : 'bg-white/50 hover:bg-white/70'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

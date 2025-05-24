@@ -15,7 +15,7 @@ import {
   CarouselNext,
   CarouselPrevious
 } from "@/components/ui/carousel";
-import { ALL_SPACES } from '@/pages/Spaces';
+import { ALL_SPACES } from '@/data/spaces';
 import { Space } from '@/components/SpaceCard';
 import SpaceGallery from '@/components/SpaceGallery';
 import WhatsAppButton from '@/components/WhatsAppButton';

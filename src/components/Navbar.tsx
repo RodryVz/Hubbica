@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -31,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-2">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-1.5">
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
@@ -56,17 +57,17 @@ const Navbar = () => {
         </div>
         
         {/* CTA Buttons */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
           
-          {/* WhatsApp contact button for CEO - Fixed centering and styling */}
+          {/* WhatsApp contact button for CEO - Fixed styling */}
           <div className="hidden sm:inline-flex">
             <WhatsAppButton 
               phoneNumber="5491234567890"
               message="Hola! Me gustaría obtener más información sobre Hubbica."
-              variant="outline"
+              variant="ghost"
               size="icon"
-              className="rounded-full h-9 w-9 flex items-center justify-center border-brand-purple/20 hover:border-brand-purple hover:bg-brand-purple/5 transition-all duration-200"
+              className="h-10 w-10 rounded-full border border-green-500/20 bg-green-50 text-green-600 hover:bg-green-100 hover:border-green-500/40 transition-all duration-200"
               trackingSource="navbar"
             />
           </div>

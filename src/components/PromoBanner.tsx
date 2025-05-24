@@ -90,7 +90,7 @@ const PromoBanner = () => {
       <Button 
         variant="ghost" 
         size="icon" 
-        className="absolute top-4 right-8 rounded-full z-20 bg-white/80 backdrop-blur-sm hover:bg-white/90" 
+        className="absolute top-4 right-4 z-20 bg-white/80 backdrop-blur-sm hover:bg-white/90 rounded-full" 
         onClick={() => setIsOpen(false)}
         aria-label="Cerrar promoción"
       >
@@ -98,7 +98,7 @@ const PromoBanner = () => {
       </Button>
       
       <Link to={currentPromo.link} className="block group">
-        <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
+        <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
           {/* Background Image */}
           <div 
             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -106,42 +106,42 @@ const PromoBanner = () => {
             aria-hidden="true"
           />
           
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" aria-hidden="true" />
+          {/* Gradient Overlay - Enhanced for mobile */}
+          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/60 to-black/20 md:to-transparent" aria-hidden="true" />
           
           {/* Content */}
-          <div className="relative z-10 h-full flex items-center">
+          <div className="relative z-10 h-full flex items-end md:items-center">
             <div className="container max-w-5xl">
-              <div className="max-w-2xl px-4 sm:px-0">
-                <div className="flex items-center gap-2 mb-4">
-                  <Sparkles size={24} className="text-brand-orange" aria-hidden="true" />
-                  <span className="text-white/80 font-medium">Promociones exclusivas hubbica</span>
+              <div className="max-w-2xl px-4 pb-6 md:pb-0">
+                <div className="flex items-center gap-2 mb-3">
+                  <Sparkles size={20} className="text-brand-orange" aria-hidden="true" />
+                  <span className="text-white/90 font-medium text-sm md:text-base">Promociones exclusivas hubbica</span>
                 </div>
                 
-                <div className="mb-4">
-                  <span className="inline-block bg-brand-purple text-white px-4 py-2 rounded-full text-lg font-bold shadow-lg mb-4">
+                <div className="mb-3">
+                  <span className="inline-block bg-brand-purple text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-base md:text-lg font-bold shadow-lg">
                     {currentPromo.discount}
                   </span>
                 </div>
                 
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4 leading-tight">
+                <h2 className="text-xl md:text-4xl font-display font-bold text-white mb-3 md:mb-4 leading-tight">
                   {currentPromo.title}
                 </h2>
                 
-                <p className="text-white/90 text-lg mb-6 leading-relaxed">
+                <p className="text-white/90 text-sm md:text-lg mb-4 md:mb-6 leading-relaxed line-clamp-2 md:line-clamp-none">
                   {currentPromo.description}
                 </p>
                 
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4">
                   <Button 
-                    size="lg" 
-                    className="rounded-full bg-brand-purple hover:bg-brand-deep-purple group-hover:scale-105 transition-all duration-300"
+                    size="sm" 
+                    className="md:size-lg rounded-full bg-brand-purple hover:bg-brand-deep-purple group-hover:scale-105 transition-all duration-300"
                   >
-                    <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
+                    <MessageCircle className="mr-2 h-4 w-4" aria-hidden="true" />
                     Ver promociones
                   </Button>
                   
-                  <span className="text-white/70 text-sm">
+                  <span className="text-white/70 text-xs md:text-sm">
                     {currentPromo.venue}
                   </span>
                 </div>
@@ -154,30 +154,30 @@ const PromoBanner = () => {
             <>
               <button
                 onClick={(e) => { e.preventDefault(); prevSlide(); }}
-                className="absolute left-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
+                className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-2 md:p-3 transition-all duration-300"
                 aria-label="Promoción anterior"
               >
-                <ChevronLeft className="h-6 w-6 text-white" aria-hidden="true" />
+                <ChevronLeft className="h-4 w-4 md:h-6 md:w-6 text-white" aria-hidden="true" />
               </button>
               
               <button
                 onClick={(e) => { e.preventDefault(); nextSlide(); }}
-                className="absolute right-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300"
+                className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-2 md:p-3 transition-all duration-300"
                 aria-label="Promoción siguiente"
               >
-                <ChevronRight className="h-6 w-6 text-white" aria-hidden="true" />
+                <ChevronRight className="h-4 w-4 md:h-6 md:w-6 text-white" aria-hidden="true" />
               </button>
             </>
           )}
           
           {/* Dots Indicator */}
           {PROMO_ITEMS.length > 1 && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+            <div className="absolute bottom-2 md:bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
               {PROMO_ITEMS.map((_, index) => (
                 <button
                   key={index}
                   onClick={(e) => { e.preventDefault(); setCurrentIndex(index); }}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex 
                       ? 'bg-white scale-110' 
                       : 'bg-white/50 hover:bg-white/70'

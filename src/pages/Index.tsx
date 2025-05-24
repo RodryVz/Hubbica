@@ -261,14 +261,10 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Become a host - Enhanced with darker tones for attention */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gray-900/80 via-brand-purple/60 to-brand-deep-purple/80"></div>
-          <div className="absolute top-10 right-10 w-72 h-72 bg-brand-purple/40 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-96 h-96 bg-brand-orange/30 rounded-full blur-3xl"></div>
-          
-          <div className="container relative z-10">
-            <div className="max-w-6xl mx-auto bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border border-white/30">
+        {/* Become a host - Simplified and minimalist design */}
+        <section className="py-16 bg-gray-50">
+          <div className="container">
+            <div className="max-w-4xl mx-auto bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-64 md:h-auto">
                   <img 
@@ -276,63 +272,34 @@ const Index = () => {
                     alt="Publica tu espacio"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent md:hidden flex items-end">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden flex items-end">
                     <h2 className="text-2xl font-display font-bold text-white p-6">
-                      💰 Monetizá tu espacio
+                      Monetizá tu espacio
                     </h2>
-                  </div>
-                  
-                  {/* Floating elements for visual appeal */}
-                  <div className="absolute top-4 right-4 bg-brand-orange text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
-                    🚀 ¡Nuevo!
-                  </div>
-                  <div className="absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
-                    💵 Gana hasta $200k/mes
                   </div>
                 </div>
                 
-                <div className="p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-gray-800 to-gray-900 text-white">
-                  <div className="mb-4">
-                    <span className="inline-block bg-brand-orange/90 text-white px-4 py-2 rounded-full text-sm font-medium mb-4 shadow-lg">
-                      🏠 Para propietarios
-                    </span>
-                  </div>
-                  
-                  <h2 className="hidden md:block text-3xl md:text-4xl font-display font-bold mb-4 bg-gradient-to-r from-brand-orange to-yellow-400 bg-clip-text text-transparent">
-                    💰 Monetizá tu espacio
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <h2 className="hidden md:block text-3xl font-display font-bold mb-4 text-gray-900">
+                    Monetizá tu espacio
                   </h2>
                   
-                  <p className="text-lg mb-6 text-gray-200 leading-relaxed">
-                    <strong className="text-white">Transformá tu espacio en una fuente de ingresos.</strong> Generá ganancias alquilando por horas o días. Vos decidís cuándo, cuánto y qué experiencias ofrecer.
+                  <p className="text-lg mb-6 text-gray-600 leading-relaxed">
+                    Transformá tu espacio en una fuente de ingresos. Generá ganancias alquilando por horas o días.
                   </p>
                   
                   <ul className="mb-8 space-y-3">
                     <li className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center shadow-lg">
-                        <span className="text-white font-bold">✓</span>
-                      </div>
-                      <div>
-                        <span className="font-medium text-white">Sin inversión inicial</span>
-                        <p className="text-sm text-gray-300">Empezá hoy mismo sin costos</p>
-                      </div>
+                      <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                      <span className="text-gray-700">Sin inversión inicial</span>
                     </li>
                     <li className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
-                        <span className="text-white font-bold">⏰</span>
-                      </div>
-                      <div>
-                        <span className="font-medium text-white">Flexibilidad total</span>
-                        <p className="text-sm text-gray-300">Manejá tus horarios como quieras</p>
-                      </div>
+                      <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                      <span className="text-gray-700">Flexibilidad total</span>
                     </li>
                     <li className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-brand-orange to-yellow-500 flex items-center justify-center shadow-lg">
-                        <span className="text-white font-bold">💰</span>
-                      </div>
-                      <div>
-                        <span className="font-medium text-white">Ingresos recurrentes</span>
-                        <p className="text-sm text-gray-300">Construí un flujo de dinero constante</p>
-                      </div>
+                      <div className="w-2 h-2 rounded-full bg-brand-purple"></div>
+                      <span className="text-gray-700">Ingresos recurrentes</span>
                     </li>
                   </ul>
                   
@@ -340,10 +307,9 @@ const Index = () => {
                     <Link to="/how-to-host" className="flex-1">
                       <Button 
                         size="lg" 
-                        className="w-full rounded-full bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-gray-900 font-bold transition-all duration-300 group shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+                        className="w-full rounded-lg bg-brand-purple hover:bg-brand-deep-purple transition-colors"
                       >
-                        🚀 Publicá tu espacio ahora
-                        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                        Publicá tu espacio
                       </Button>
                     </Link>
                     
@@ -351,17 +317,11 @@ const Index = () => {
                       phoneNumber="5491234567890"
                       message="Hola! Me interesa publicar mi espacio en Hubbica. ¿Podrías contarme más sobre cómo funciona?"
                       variant="outline"
-                      className="px-6 py-3 rounded-full border-2 border-gray-500/50 hover:border-gray-300 hover:bg-gray-700/50 text-gray-200 hover:text-white transition-all duration-300"
+                      className="px-6 py-3 rounded-lg border-gray-300 hover:bg-gray-50 transition-colors"
                       trackingSource="monetize-section"
                     >
-                      💬 Consultá con nosotros
+                      Consultá
                     </WhatsAppButton>
-                  </div>
-                  
-                  <div className="mt-6 text-center">
-                    <p className="text-sm text-gray-400">
-                      🎯 <strong className="text-white">+500 propietarios</strong> ya confían en Hubbica
-                    </p>
                   </div>
                 </div>
               </div>

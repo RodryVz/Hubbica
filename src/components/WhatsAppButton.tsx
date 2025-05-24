@@ -105,9 +105,9 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       {...buttonProps}
       onClick={handleWhatsAppContact}
     >
-      {/* WhatsApp Icon */}
+      {/* WhatsApp Icon - Larger size */}
       <svg 
-        className="w-4 h-4 mr-2" 
+        className="w-5 h-5 mr-2" 
         fill="currentColor" 
         viewBox="0 0 24 24"
         aria-hidden="true"

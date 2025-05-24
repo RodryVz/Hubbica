@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-1.5">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-1">
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
@@ -60,14 +60,14 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           
-          {/* WhatsApp contact button for CEO - Fixed styling */}
+          {/* WhatsApp contact button for CEO - Simplified styling */}
           <div className="hidden sm:inline-flex">
             <WhatsAppButton 
               phoneNumber="5491234567890"
               message="Hola! Me gustaría obtener más información sobre Hubbica."
               variant="ghost"
               size="icon"
-              className="h-10 w-10 rounded-full border border-green-500/20 bg-green-50 text-green-600 hover:bg-green-100 hover:border-green-500/40 transition-all duration-200"
+              className="h-10 w-10 text-green-600 hover:text-green-700 hover:bg-green-50 transition-all duration-200"
               trackingSource="navbar"
             />
           </div>

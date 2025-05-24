@@ -1,6 +1,8 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Space } from '@/components/SpaceCard';
+import SpaceCard from '@/components/SpaceCard';
 import Layout from '@/components/Layout';
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -115,7 +117,7 @@ const Spaces = () => {
                 <div className="mb-6">
                   <h3 className="font-medium mb-3">Categorías</h3>
                   {CATEGORIES.map((category) => (
-                    <div key={category.id} className="flex items-center space-x-2">
+                    <div key={category.id} className="flex items-center space-x-2 mb-2">
                       <Checkbox
                         id={category.id}
                         checked={selectedCategory === category.id}
@@ -139,7 +141,7 @@ const Spaces = () => {
                     step={10}
                     onValueChange={(value) => setPriceRange(value as [number, number])}
                   />
-                  <div className="flex justify-between text-sm text-gray-500">
+                  <div className="flex justify-between text-sm text-gray-500 mt-2">
                     <span>${priceRange[0]}</span>
                     <span>${priceRange[1]}</span>
                   </div>
@@ -154,12 +156,12 @@ const Spaces = () => {
                     step={1}
                     onValueChange={(value) => setCapacity(value[0])}
                   />
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-gray-500 mt-2">
                     <span>{capacity} personas</span>
                   </div>
                 </div>
                 
-                {/* Features Filter - Fixed TypeScript error */}
+                {/* Features Filter */}
                 <div className="mb-6">
                   <h3 className="font-medium mb-3">Características</h3>
                   <div className="flex items-center space-x-2">
@@ -175,7 +177,7 @@ const Spaces = () => {
                 </div>
                 
                 {/* Clear Filters Button */}
-                <Button variant="outline" onClick={() => {
+                <Button variant="outline" className="w-full" onClick={() => {
                   setSelectedCategory(null);
                   setPriceRange([0, 500]);
                   setCapacity(1);
@@ -189,16 +191,37 @@ const Spaces = () => {
 
             {/* Results Section */}
             <div className="lg:col-span-3">
-              <h2 className="text-2xl font-bold mb-4">
+              <h2 className="text-2xl font-bold mb-6">
                 {filteredSpaces.length} Espacios encontrados
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {filteredSpaces.map((space) => (
-                  <div key={space.id}>
-                    {space.name}
-                  </div>
-                ))}
-              </div>
+              
+              {filteredSpaces.length === 0 ? (
+                <div className="text-center py-12">
+                  <p className="text-gray-500 text-lg">No se encontraron espacios con los filtros aplicados.</p>
+                  <Button 
+                    variant="outline" 
+                    className="mt-4"
+                    onClick={() => {
+                      setSelectedCategory(null);
+                      setPriceRange([0, 500]);
+                      setCapacity(1);
+                      setHasFeaturesFilter(false);
+                      setSearchQuery('');
+                    }}
+                  >
+                    Limpiar filtros
+                  </Button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {filteredSpaces.map((space) => (
+                    <SpaceCard 
+                      key={space.id} 
+                      space={space}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

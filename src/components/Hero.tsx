@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import IntentSearch from './IntentSearch';
@@ -15,7 +14,7 @@ import IntentSearch from './IntentSearch';
  */
 const Hero = () => {
   return (
-    <div className="relative overflow-hidden py-16 sm:py-24 md:py-32">
+    <div className="relative overflow-hidden py-12 sm:py-20 md:py-28">
       {/* Background image with enhanced visibility */}
       <div className="absolute inset-0 -z-10">
         <img 
@@ -28,7 +27,7 @@ const Hero = () => {
       
       <div className="container max-w-5xl relative z-10">
         <div className="text-center space-y-6 md:space-y-8 animate-fade-in">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-display font-bold leading-tight">
             Espacios únicos para <span className="text-brand-purple">experiencias</span> inolvidables
           </h1>
           
@@ -40,14 +39,14 @@ const Hero = () => {
             <IntentSearch />
           </div>
           
-          <div className="pt-4 flex flex-wrap gap-3 sm:gap-4 justify-center">
+          <div className="pt-4 flex flex-wrap gap-4 justify-center">
             <Link to="/spaces">
-              <Button variant="outline" className="rounded-full text-sm sm:text-base">
+              <Button variant="outline" className="rounded-full text-sm sm:text-base px-6 py-3 border-2 border-brand-purple/30 hover:border-brand-purple hover:bg-brand-purple/5 transition-all duration-300 font-medium shadow-sm hover:shadow-md">
                 Explorar espacios
               </Button>
             </Link>
             <Link to="/how-to-host">
-              <Button className="rounded-full text-sm sm:text-base">
+              <Button className="rounded-full text-sm sm:text-base px-6 py-3 bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                 Publica tu espacio
               </Button>
             </Link>

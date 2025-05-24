@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, MapPin, Users } from 'lucide-react';
@@ -85,6 +84,28 @@ const SpaceCard = ({ space, featured = false }: SpaceCardProps) => {
           className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
         />
         
+        {/* Navigation arrows - only show if more than one image */}
+        {space.images.length > 1 && (
+          <>
+            <button 
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 transition-all duration-200 z-10"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button 
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 transition-all duration-200 z-10"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </>
+        )}
+        
         {/* Navigation dots */}
         {space.images.length > 1 && (
           <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
@@ -115,7 +136,7 @@ const SpaceCard = ({ space, featured = false }: SpaceCardProps) => {
         </button>
         
         {/* Price Badge */}
-        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-black px-3 py-1 rounded-md text-sm font-medium">
+        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-black px-3 py-1 rounded-md text-sm font-medium shadow-sm">
           ARS {convertToARS(space.pricePerHour).toLocaleString()}/h
         </div>
       </div>

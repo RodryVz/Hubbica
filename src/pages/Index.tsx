@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
 import { ArrowRight } from 'lucide-react';
 import PromoBanner from '@/components/PromoBanner';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 // Mock data for featured spaces
 const FEATURED_SPACES: Space[] = [
@@ -260,12 +261,14 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Become a host - Keep existing section */}
+        {/* Become a host - Enhanced with more attractive design */}
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-purple/20 to-brand-purple/5"></div>
+          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-purple/30 via-brand-purple/10 to-brand-orange/10"></div>
+          <div className="absolute top-10 right-10 w-72 h-72 bg-brand-purple/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-96 h-96 bg-brand-orange/15 rounded-full blur-3xl"></div>
           
-          <div className="container">
-            <div className="max-w-5xl mx-auto bg-white rounded-2xl overflow-hidden shadow-xl">
+          <div className="container relative z-10">
+            <div className="max-w-6xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border border-white/20">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-64 md:h-auto">
                   <img 
@@ -275,52 +278,97 @@ const Index = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent md:hidden flex items-end">
                     <h2 className="text-2xl font-display font-bold text-white p-6">
-                      Monetizá tu espacio
+                      💰 Monetizá tu espacio
                     </h2>
+                  </div>
+                  
+                  {/* Floating elements for visual appeal */}
+                  <div className="absolute top-4 right-4 bg-brand-orange text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
+                    🚀 ¡Nuevo!
+                  </div>
+                  <div className="absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+                    💵 Gana hasta $200k/mes
                   </div>
                 </div>
                 
-                <div className="p-8 md:p-10 flex flex-col justify-center">
-                  <h2 className="hidden md:block text-3xl md:text-4xl font-display font-bold mb-4">
-                    Monetizá tu espacio
+                <div className="p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-white to-gray-50">
+                  <div className="mb-4">
+                    <span className="inline-block bg-brand-purple/10 text-brand-purple px-4 py-2 rounded-full text-sm font-medium mb-4">
+                      🏠 Para propietarios
+                    </span>
+                  </div>
+                  
+                  <h2 className="hidden md:block text-3xl md:text-4xl font-display font-bold mb-4 bg-gradient-to-r from-brand-purple to-brand-deep-purple bg-clip-text text-transparent">
+                    💰 Monetizá tu espacio
                   </h2>
-                  <p className="text-lg mb-6 text-gray-700">
-                    Generá ingresos alquilando tu espacio por horas o días. Vos decidís cuándo está disponible, cuánto cuesta y qué experiencias ofrecer.
+                  
+                  <p className="text-lg mb-6 text-gray-700 leading-relaxed">
+                    <strong>Transformá tu espacio en una fuente de ingresos.</strong> Generá ganancias alquilando por horas o días. Vos decidís cuándo, cuánto y qué experiencias ofrecer.
                   </p>
-                  <ul className="mb-6 space-y-2">
-                    <li className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full bg-brand-purple/20 flex items-center justify-center">
-                        <span className="text-brand-purple">✓</span>
+                  
+                  <ul className="mb-8 space-y-3">
+                    <li className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-400 to-green-500 flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold">✓</span>
                       </div>
-                      <span>Sin inversión inicial</span>
+                      <div>
+                        <span className="font-medium">Sin inversión inicial</span>
+                        <p className="text-sm text-gray-600">Empezá hoy mismo sin costos</p>
+                      </div>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full bg-brand-purple/20 flex items-center justify-center">
-                        <span className="text-brand-purple">✓</span>
+                    <li className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold">⏰</span>
                       </div>
-                      <span>Flexibilidad total de horarios</span>
+                      <div>
+                        <span className="font-medium">Flexibilidad total</span>
+                        <p className="text-sm text-gray-600">Manejá tus horarios como quieras</p>
+                      </div>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full bg-brand-purple/20 flex items-center justify-center">
-                        <span className="text-brand-purple">✓</span>
+                    <li className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-brand-purple to-brand-deep-purple flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold">💰</span>
                       </div>
-                      <span>Ganancias recurrentes</span>
+                      <div>
+                        <span className="font-medium">Ingresos recurrentes</span>
+                        <p className="text-sm text-gray-600">Construí un flujo de dinero constante</p>
+                      </div>
                     </li>
                   </ul>
-                  <Link to="/how-to-host">
-                    <Button 
-                      size="lg" 
-                      className="rounded-full mt-2 group"
+                  
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link to="/how-to-host" className="flex-1">
+                      <Button 
+                        size="lg" 
+                        className="w-full rounded-full bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-300 group shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+                      >
+                        🚀 Publicá tu espacio ahora
+                        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                    
+                    <WhatsAppButton 
+                      phoneNumber="5491234567890"
+                      message="Hola! Me interesa publicar mi espacio en Hubbica. ¿Podrías contarme más sobre cómo funciona?"
+                      variant="outline"
+                      className="px-6 py-3 rounded-full border-2 border-brand-purple/30 hover:border-brand-purple hover:bg-brand-purple/5 transition-all duration-300"
+                      trackingSource="monetize-section"
                     >
-                      Publicá tu espacio ahora
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
+                      💬 Consultá con nosotros
+                    </WhatsAppButton>
+                  </div>
+                  
+                  <div className="mt-6 text-center">
+                    <p className="text-sm text-gray-500">
+                      🎯 <strong>+500 propietarios</strong> ya confían en Hubbica
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        
       </main>
     </Layout>
   );

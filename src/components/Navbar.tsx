@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -32,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-4">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-2">
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
@@ -57,29 +56,31 @@ const Navbar = () => {
         </div>
         
         {/* CTA Buttons */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <ThemeToggle />
           
-          {/* WhatsApp contact button for CEO */}
+          {/* WhatsApp contact button for CEO - Fixed centering and styling */}
           <div className="hidden sm:inline-flex">
             <WhatsAppButton 
               phoneNumber="5491234567890"
               message="Hola! Me gustaría obtener más información sobre Hubbica."
               variant="outline"
               size="icon"
-              className="rounded-full"
+              className="rounded-full h-9 w-9 flex items-center justify-center border-brand-purple/20 hover:border-brand-purple hover:bg-brand-purple/5 transition-all duration-200"
               trackingSource="navbar"
             />
           </div>
           
           <Link to="/how-to-host" className="hidden sm:inline-flex">
-            <Button className="rounded-full">Publica tu espacio</Button>
+            <Button className="rounded-full bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-200 shadow-md hover:shadow-lg">
+              Publica tu espacio
+            </Button>
           </Link>
           
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="outline" size="icon" className="rounded-full">
+              <Button variant="outline" size="icon" className="rounded-full h-9 w-9">
                 {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
               </Button>
             </SheetTrigger>

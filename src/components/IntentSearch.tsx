@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -135,11 +134,11 @@ const IntentSearch = () => {
 
   return (
     <form onSubmit={handleSearch} className="w-full max-w-2xl mx-auto">
-      <div className="flex gap-2 p-1.5 bg-white border border-gray-200 rounded-full shadow-md">
+      <div className="flex gap-2 p-1.5 bg-white border border-gray-200 rounded-full shadow-md hover:shadow-lg transition-shadow duration-200">
         <div className="relative flex-grow">
           <Input
             type="text"
-            className="pl-4 pr-4 py-4 h-auto rounded-full border-0 shadow-none text-base md:text-lg"
+            className="pl-4 pr-4 py-4 h-auto rounded-full border-0 shadow-none text-base md:text-lg focus:outline-none"
             placeholder="Describe lo que quieres vivir..."
             value={searchIntent}
             onChange={(e) => setSearchIntent(e.target.value)}
@@ -149,7 +148,7 @@ const IntentSearch = () => {
         <Button 
           type="submit" 
           size="icon"
-          className="rounded-full w-12 h-12 flex items-center justify-center"
+          className="rounded-full w-12 h-12 bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center"
           disabled={isSearching}
           aria-label="Buscar"
         >

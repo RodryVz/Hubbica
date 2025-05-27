@@ -1,132 +1,166 @@
 
-# 📊 Guía para Modificar Datos del Proyecto
+# 📊 Guía de Gestión de Datos - Hubbica
 
-## 🎯 Archivos de Datos Principales
+## 🎯 Descripción General
 
-### 1. Promociones (`promotions.ts`)
+Esta carpeta contiene todos los datos del proyecto organizados para facilitar el mantenimiento y escalabilidad. Cada archivo tiene una responsabilidad específica y está documentado en español.
 
-#### ¿Qué contiene?
-- Lista de promociones activas
-- Descuentos y ofertas especiales
-- Términos y condiciones
-- Imágenes y descripciones
+## 📁 Estructura de Archivos
 
-#### ¿Cómo agregar una nueva promoción?
+### Archivos Principales de Datos
+- `promotions.ts` - Todas las promociones y ofertas
+- `spaces.ts` - Catálogo completo de espacios
+- `espacios/` - Datos organizados por categorías
 
+### Subcarpeta Espacios (`espacios/`)
+- `featured.ts` - Espacios destacados en página principal
+- `categories.ts` - Categorías de experiencias disponibles
+- `README.md` - Guía específica de gestión de espacios
+
+## 🔧 Cómo Modificar Contenido
+
+### ✨ Agregar Nueva Promoción
+
+Editar `promotions.ts`:
 ```typescript
-// Agregar al array PROMO_DETAILS:
 {
-  id: "promo4", // ID único
-  title: "Nueva promoción especial",
-  description: "Descripción corta para listados",
-  longDescription: "Descripción detallada que aparece en la página",
-  discount: "30% OFF", // Texto del descuento
-  image: "URL_DE_IMAGEN", // URL de imagen de Unsplash o similar
-  venue: "Tipo de venue",
-  features: ["Característica 1", "Característica 2"], // Array de features
-  capacity: "X-Y personas",
-  duration: "Duración mínima",
-  location: "Ubicaciones disponibles",
-  icon: NombreIcono, // Importar de lucide-react
-  benefits: ["Beneficio 1", "Beneficio 2"], // Array de beneficios
-  restrictions: ["Restricción 1", "Restricción 2"] // Array de restricciones
+  id: 6, // Número único secuencial
+  title: "Nombre de tu Promoción",
+  description: "Descripción detallada de la oferta",
+  discount: "50% OFF", // Texto del descuento
+  validUntil: "31 de Marzo", // Fecha límite
+  terms: "Términos y condiciones específicos",
+  image: "URL_DE_LA_IMAGEN",
+  whatsappMessage: "Mensaje personalizado para WhatsApp"
 }
 ```
 
-#### ⚠️ Importante para promociones:
-- **ID único**: Siempre usar un ID único (promo1, promo2, etc.)
-- **Imágenes**: Usar URLs de Unsplash con buena calidad
-- **Iconos**: Importar desde `lucide-react` en la parte superior del archivo
-- **Textos**: Mantener consistencia en el tono de comunicación
+### 🏢 Agregar Nuevo Espacio
 
-### 2. Espacios (`spaces.ts`)
-
-#### ¿Qué contiene?
-- Catálogo completo de espacios
-- Precios por hora y modelos de revenue share
-- Ubicaciones y capacidades
-- Categorías y tags
-
-#### ¿Cómo agregar un nuevo espacio?
-
+Editar `spaces.ts` en el array `ALL_SPACES`:
 ```typescript
-// Agregar al array de espacios:
 {
-  id: 'nuevo-id', // ID único en formato kebab-case
+  id: 'identificador-unico',
   name: 'Nombre del Espacio',
-  description: 'Descripción detallada del espacio y sus características',
-  images: [
-    'URL_IMAGEN_1', // Primera imagen (principal)
-    'URL_IMAGEN_2'  // Imágenes adicionales
-  ],
+  description: 'Descripción completa del espacio',
+  images: ['URL_IMAGEN_1', 'URL_IMAGEN_2'],
   city: 'Ciudad',
   neighborhood: 'Barrio',
-  pricePerHour: 100, // Precio por hora en euros/pesos
-  revenueShare: 15, // Porcentaje de revenue share (0 si no aplica)
-  capacity: 50, // Capacidad máxima de personas
-  tags: ['Tag1', 'Tag2'], // Array de tags para filtrado
-  rating: 4.8 // Rating del 1 al 5 (con decimales)
+  pricePerHour: 100, // Precio por hora
+  revenueShare: 15, // Porcentaje de comisión (0 si no aplica)
+  capacity: 30, // Capacidad máxima
+  tags: ['Tag1', 'Tag2', 'Tag3'], // Para filtros
+  rating: 4.8 // Calificación sobre 5
 }
 ```
 
-#### ⚠️ Importante para espacios:
-- **Imágenes**: Primera imagen es la principal que se muestra en cards
-- **Precios**: Usar números enteros para facilidad de lectura
-- **Tags**: Mantener consistencia con tags existentes
-- **Rating**: Usar valores realistas entre 4.0 y 5.0
+### 🎨 Modificar Espacios Destacados
 
-## 🔧 Configuración de WhatsApp
+Editar `espacios/featured.ts`:
+```typescript
+// Mantener exactamente 4 espacios para diseño óptimo
+export const FEATURED_SPACES: Space[] = [
+  ALL_SPACES.find(space => space.id === '1')!,
+  ALL_SPACES.find(space => space.id === '2')!,
+  ALL_SPACES.find(space => space.id === '3')!,
+  ALL_SPACES.find(space => space.id === '4')!,
+];
+```
 
-### Número de Teléfono
-**Archivo**: `src/components/WhatsAppButton.tsx`
-**Línea**: Buscar `phoneNumber` en las props del componente
+### 📂 Agregar Nueva Categoría
+
+Editar `espacios/categories.ts`:
+```typescript
+// En el array CATEGORIES:
+{
+  id: 'identificador-categoria',
+  name: 'Nombre de la Categoría',
+  image: 'URL_IMAGEN_CATEGORIA'
+}
+
+// En CATEGORY_TAG_MAPPING:
+'identificador-categoria': ['Tag1', 'Tag2', 'Tag3']
+```
+
+## 🔍 Sistema de Tags
+
+### Tags Disponibles Actuales
+- **Eventos**: `Terraza`, `Vistas`, `Bar`, `Eventos`
+- **Trabajo**: `Industrial`, `Taller`, `Creativo`
+- **Gastronomía**: `Cocina`, `Loft`, `Cenas`
+- **Bienestar**: `Yoga`, `Jardín`, `Wellness`
+- **Arte**: `Galería`, `Arte`
+- **Música**: `Música`, `Acústica`, `Estudio`
+
+### Agregar Nuevos Tags
+1. Agregar el tag a espacios en `spaces.ts`
+2. Actualizar mapeo en `components/IntentSearch.tsx`
+3. Incluir en filtros de `categories.ts` si corresponde
+
+## 🔄 Flujo de Sincronización
+
+### Archivos que se Importan Entre Sí:
+1. `spaces.ts` → Exporta todos los espacios y tipos
+2. `featured.ts` → Importa de `spaces.ts` para destacados
+3. `categories.ts` → Define categorías independientes
+4. `promotions.ts` → Archivo independiente para promociones
+
+### Páginas que Usan Estos Datos:
+- `Index.tsx` → featured.ts, categories.ts
+- `Spaces.tsx` → spaces.ts, categories.ts
+- `Promos.tsx` → promotions.ts
+
+## ⚠️ Importante: Reglas de Mantenimiento
+
+### ✅ Hacer Siempre:
+- Usar IDs únicos para espacios y promociones
+- Mantener exactamente 4 espacios destacados
+- Incluir tags relevantes para filtros
+- Usar imágenes de alta calidad (mínimo 1170x780)
+- Documentar cambios importantes
+
+### ❌ Evitar:
+- Cambiar IDs existentes (rompería enlaces)
+- Dejar arrays de imágenes vacíos
+- Usar tags inconsistentes
+- Modificar estructura de objetos sin verificar dependencias
+
+## 🚀 Verificación Después de Cambios
+
+1. **Verificar en navegador**: Que las páginas cargan correctamente
+2. **Revisar consola**: No debe haber errores de JavaScript
+3. **Probar filtros**: Que funcionan en página de espacios
+4. **Verificar enlaces**: Que botones y navegación funcionan
+5. **Revisar responsive**: En móvil y desktop
+
+## 📞 WhatsApp Configuration
+
+### Números de Teléfono
+- Actualizar en `components/WhatsAppButton.tsx`
+- Formato: `"5491234567890"` (código país + número)
 
 ### Mensajes Predeterminados
-Cada página tiene mensajes específicos:
+- Promociones: En `promotions.ts`
+- Espacios: En `SpaceCard.tsx`
+- General: En `WhatsAppButton.tsx`
 
-#### Página Principal (Index.tsx)
-```typescript
-// Buscar: WhatsAppButton con message=
-message="Hola! Me interesa publicar mi espacio en Hubbica..."
-```
+## 🎨 Optimizaciones UI/UX Implementadas
 
-#### Página de Promociones (Promos.tsx)
-```typescript
-// Los mensajes se generan automáticamente por promoción
-// Se incluye el título de la promoción seleccionada
-```
+### Jerarquía Visual
+- Títulos: Tamaños escalonados y consistentes
+- Descripciones: Proporcionadas al contenido principal
+- Elementos interactivos: Tamaños táctiles optimizados
 
-## 📝 Mejores Prácticas
+### Componentes Optimizados
+- **Hero**: Barra de búsqueda con ancho máximo apropiado
+- **IntentSearch**: Padding y espaciado mejorados
+- **Botones**: Consistencia en tamaños y estados hover
 
-### Para Imágenes
-1. **Usar Unsplash**: Imágenes de alta calidad y libres de derechos
-2. **Formato recomendado**: 1170x780 píxeles mínimo
-3. **Temática coherente**: Espacios reales, bien iluminados
-4. **URLs estables**: Verificar que las URLs no caduquen
+### Performance
+- Imágenes optimizadas y lazy loading
+- Animaciones suaves sin impacto en rendimiento
+- Búsqueda eficiente con debounce integrado
 
-### Para Textos
-1. **Tono amigable**: Usar "vos" y lenguaje cercano
-2. **Información completa**: Incluir todos los detalles relevantes
-3. **Llamadas a la acción claras**: Usar verbos en imperativo
-4. **Beneficios antes que características**: Enfocar en el valor
+---
 
-### Para Precios
-1. **Transparencia**: Mostrar precios reales y actualizados
-2. **Moneda consistente**: Usar la misma moneda en todo el sitio
-3. **Revenue share**: Explicar claramente cómo funciona
-4. **Promociones**: Incluir fechas de vigencia cuando aplique
-
-## 🚨 Errores Comunes a Evitar
-
-1. **IDs duplicados**: Cada promoción/espacio debe tener ID único
-2. **Imágenes rotas**: Verificar URLs antes de publicar
-3. **Iconos no importados**: Agregar imports de lucide-react
-4. **Arrays vacíos**: Siempre incluir al menos un elemento en features/benefits
-5. **Inconsistencia en datos**: Mantener formato similar entre elementos
-
-## 📞 Contacto para Soporte Técnico
-
-Si necesitas ayuda con modificaciones más complejas:
-- Revisa primero esta documentación
-- Verifica la consola del navegador para errores
-- Mantén copias de seguridad antes de cambios grandes
+**📝 Nota**: Después de cualquier modificación, verificar que el proyecto compila sin errores ejecutando `npm run dev` en la terminal.

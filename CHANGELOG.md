@@ -1,6 +1,35 @@
 
 # 📝 Registro de Cambios - Hubbica
 
+## [v1.3.0] - 2024-11-27
+
+### ✨ Optimizaciones UI/UX
+- **Barra de búsqueda rediseñada** con ancho máximo optimizado (24rem)
+- **Jerarquía visual mejorada** entre título, descripción y elementos interactivos
+- **Espaciado y proporción optimizados** en sección Hero
+- **Mejor responsive design** para todos los dispositivos
+- **Animaciones suaves** y transiciones mejoradas
+
+### 📚 Documentación Completamente en Español
+- **ESTRUCTURA_PROYECTO.md** traducido y ampliado
+- **README_DATOS.md** optimizado con guías paso a paso
+- **Comentarios en código** completamente en español
+- **Guías de UI/UX** agregadas a documentación
+
+### 🎨 Mejoras de Interfaz
+- **Hero component** con proporción optimizada de elementos
+- **IntentSearch** con mejor UX y placeholder más claro
+- **Botones** con tamaños consistentes y estados hover mejorados
+- **Tipografía** con escalado responsive perfeccionado
+
+### 🔧 Optimizaciones Técnicas
+- **Código más limpio** y comentado en español
+- **Componentes optimizados** para mejor rendimiento
+- **Estructura CSS** mejorada con Tailwind optimizado
+- **Responsive breakpoints** ajustados para mejor experiencia
+
+---
+
 ## [v1.2.0] - 2024-11-27
 
 ### ✨ Nuevas Funcionalidades
@@ -71,3 +100,10 @@ src/data/
 - **Mayor** (v2.0.0): Cambios que rompen compatibilidad
 - **Menor** (v1.X.0): Nuevas funcionalidades
 - **Parche** (v1.1.X): Correcciones y mejoras menores
+
+### 🎯 Próximas Mejoras Planificadas
+- Sistema de reservas integrado
+- Panel de administración para anfitriones
+- Galería de imágenes mejorada
+- Sistema de reviews y calificaciones
+- Integración con mapas interactivos

@@ -9,10 +9,16 @@ src/
 │   ├── ui/             # Componentes de interfaz base (shadcn/ui)
 │   ├── Layout.tsx      # Layout principal con navbar y footer
 │   ├── SpaceCard.tsx   # Tarjeta de espacio individual
+│   ├── Hero.tsx        # Sección hero de la página principal
+│   ├── IntentSearch.tsx # Barra de búsqueda inteligente
 │   └── WhatsAppButton.tsx # Botón de contacto WhatsApp
 ├── data/               # 📊 DATOS DEL PROYECTO
 │   ├── promotions.ts   # Promociones y ofertas
 │   ├── spaces.ts       # Espacios disponibles
+│   ├── espacios/       # Datos de espacios organizados
+│   │   ├── featured.ts # Espacios destacados
+│   │   ├── categories.ts # Categorías de experiencias
+│   │   └── README.md   # Guía de gestión de espacios
 │   └── README_DATOS.md # Guía para modificar datos
 ├── pages/              # Páginas principales
 │   ├── Index.tsx       # Página de inicio
@@ -33,7 +39,15 @@ src/
 - Actualizar precios y capacidades
 - Modificar ubicaciones disponibles
 
-### 3. Configuración de WhatsApp
+### 3. Espacios Destacados (`src/data/espacios/featured.ts`)
+- Seleccionar qué espacios aparecen en la página principal
+- Mantener exactamente 4 espacios para diseño óptimo
+
+### 4. Categorías (`src/data/espacios/categories.ts`)
+- Agregar nuevos tipos de experiencias
+- Modificar imágenes y nombres de categorías
+
+### 5. Configuración de WhatsApp
 - `src/components/WhatsAppButton.tsx`: Número de teléfono
 - Mensajes predeterminados en cada página
 
@@ -43,6 +57,16 @@ src/
 - Estructura principal del sitio
 - Navbar y Footer
 - Configuración responsive
+
+### Hero.tsx
+- Sección principal de la página de inicio
+- Búsqueda inteligente integrada
+- Botones de llamada a la acción
+
+### IntentSearch.tsx
+- Búsqueda basada en intención del usuario
+- Mapeo automático de términos a tags
+- Navegación inteligente a resultados
 
 ### SpaceCard.tsx
 - Visualización de espacios individuales
@@ -57,10 +81,10 @@ src/
 ## 📱 Páginas
 
 ### Index.tsx (Página Principal)
-- Hero section con búsqueda
+- Sección hero con búsqueda inteligente
 - Espacios destacados
 - Categorías de experiencias
-- Call-to-action para anfitriones
+- Llamada a la acción para anfitriones
 
 ### Promos.tsx (Promociones)
 - Lista de promociones activas
@@ -77,10 +101,10 @@ src/
 - **Framework**: Tailwind CSS
 - **Componentes**: shadcn/ui
 - **Colores principales**: 
-  - `brand-purple`: #8B5CF6
-  - `brand-deep-purple`: #7C3AED
+  - `brand-purple`: #9b87f5
+  - `brand-deep-purple`: #7E69AB
   - `brand-orange`: #F97316
-- **Tipografía**: Inter (sistema), fuente display personalizada
+- **Tipografía**: Inter (sistema), Playfair Display (títulos)
 
 ## 📝 Convenciones de Código
 
@@ -98,3 +122,25 @@ src/
 - **Tailwind CSS** para estilos
 - **Lucide React** para iconos
 - **shadcn/ui** para componentes base
+
+## 📊 Optimizaciones UI/UX Aplicadas
+
+### Jerarquía Visual Mejorada
+- **Título principal**: Tamaño 4xl-7xl (responsive)
+- **Descripción**: Tamaño base-xl, proporcionado al título
+- **Barra de búsqueda**: Ancho máximo de 24rem (384px)
+
+### Espaciado y Proporción
+- Espaciado vertical optimizado entre elementos
+- Padding interno de la barra de búsqueda mejorado
+- Botones con tamaños consistentes y proporcionados
+
+### Interacciones Mejoradas
+- Animaciones suaves en hover y focus
+- Feedback visual inmediato en búsquedas
+- Transiciones fluidas entre estados
+
+### Responsive Design
+- Breakpoints optimizados para todos los dispositivos
+- Texto y elementos escalables según pantalla
+- Navegación táctil mejorada para móviles

@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,13 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
 
 /**
- * CONFIGURABLE SECTION: Search Tag Mapping
+ * SECCIÓN CONFIGURABLE: Mapeo de Búsqueda por Tags
  * 
- * Modify this object to add more search terms and associated tags.
- * Format: 'search term': ['Tag1', 'Tag2', 'Tag3']
+ * Modifica este objeto para agregar más términos de búsqueda y tags asociados.
+ * Formato: 'término de búsqueda': ['Tag1', 'Tag2', 'Tag3']
  * 
- * When users search for these terms, the system will find spaces with matching tags.
- * You can add variations of the same term (with/without accents) for better matching.
+ * Cuando los usuarios busquen estos términos, el sistema encontrará espacios con tags coincidentes.
+ * Puedes agregar variaciones del mismo término (con/sin acentos) para mejor coincidencia.
  */
 const SEARCH_TAG_MAPPING: { [key: string]: string[] } = {
   // Eventos y celebraciones
@@ -68,15 +69,15 @@ const SEARCH_TAG_MAPPING: { [key: string]: string[] } = {
 };
 
 /**
- * IntentSearch component - Intent-based search input with tag mapping
+ * Componente IntentSearch - Entrada de búsqueda basada en intención con mapeo de tags
  * 
- * This component handles the search functionality that maps user intentions
- * to specific tags, which are then used to filter spaces.
+ * Este componente maneja la funcionalidad de búsqueda que mapea las intenciones del usuario
+ * a tags específicos, que luego se usan para filtrar espacios.
  * 
- * TO MODIFY:
- * - To add more search terms: Update the SEARCH_TAG_MAPPING object above
- * - To change search behavior: Modify the handleSearch function
- * - To change UI appearance: Update the JSX/Tailwind classes below
+ * PARA MODIFICAR:
+ * - Para agregar más términos de búsqueda: Actualizar el objeto SEARCH_TAG_MAPPING arriba
+ * - Para cambiar el comportamiento de búsqueda: Modificar la función handleSearch
+ * - Para cambiar la apariencia UI: Actualizar las clases JSX/Tailwind abajo
  */
 const IntentSearch = () => {
   const [searchIntent, setSearchIntent] = useState('');
@@ -85,33 +86,33 @@ const IntentSearch = () => {
   const { toast } = useToast();
   
   /**
-   * Handles the search form submission
-   * Maps user search terms to relevant tags and navigates to results
+   * Maneja el envío del formulario de búsqueda
+   * Mapea los términos de búsqueda del usuario a tags relevantes y navega a los resultados
    */
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchIntent) {
       setIsSearching(true);
       
-      // Search for related tags based on intent
+      // Buscar tags relacionados basados en la intención
       const searchLower = searchIntent.toLowerCase();
       let matchedTags: string[] = [];
       
-      // Look for exact matches first
+      // Buscar coincidencias exactas primero
       for (const [key, tags] of Object.entries(SEARCH_TAG_MAPPING)) {
         if (searchLower.includes(key)) {
           matchedTags = [...matchedTags, ...tags];
         }
       }
       
-      // Remove duplicates
+      // Remover duplicados
       matchedTags = [...new Set(matchedTags)];
       
-      // Simulate search delay for better UX
+      // Simular retraso de búsqueda para mejor UX
       setTimeout(() => {
         setIsSearching(false);
         
-        // Navigate to search results with appropriate parameters
+        // Navegar a resultados de búsqueda con parámetros apropiados
         if (matchedTags.length > 0) {
           navigate(`/spaces?intent=${encodeURIComponent(searchIntent)}&tags=${encodeURIComponent(matchedTags.join(','))}`);
         } else {
@@ -122,7 +123,7 @@ const IntentSearch = () => {
           title: "Búsqueda iniciada",
           description: "Encontrando espacios que coincidan con tu intención...",
         });
-      }, 800);
+      }, 600);
     } else {
       toast({
         title: "Campo vacío",
@@ -133,13 +134,13 @@ const IntentSearch = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="w-full max-w-2xl mx-auto">
-      <div className="flex gap-2 p-1.5 bg-white border border-gray-200 rounded-full shadow-md hover:shadow-lg transition-shadow duration-200">
+    <form onSubmit={handleSearch} className="w-full">
+      <div className="flex gap-2 p-2 bg-white border border-gray-200 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
         <div className="relative flex-grow">
           <Input
             type="text"
-            className="pl-4 pr-4 py-4 h-auto rounded-full border-0 shadow-none text-base md:text-lg focus:outline-none"
-            placeholder="Describe lo que quieres vivir..."
+            className="pl-6 pr-4 py-4 h-auto rounded-full border-0 shadow-none text-base focus:outline-none placeholder:text-gray-400"
+            placeholder="¿Qué experiencia quieres vivir?"
             value={searchIntent}
             onChange={(e) => setSearchIntent(e.target.value)}
             aria-label="Buscar espacios"
@@ -148,7 +149,7 @@ const IntentSearch = () => {
         <Button 
           type="submit" 
           size="icon"
-          className="rounded-full w-12 h-12 bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center"
+          className="rounded-full w-12 h-12 bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center flex-shrink-0"
           disabled={isSearching}
           aria-label="Buscar"
         >

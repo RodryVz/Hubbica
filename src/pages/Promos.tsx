@@ -1,85 +1,9 @@
 
-import { MessageCircle, Sparkles, Star, Clock, MapPin, Users, Camera, Utensils, Check, Shield, Phone } from 'lucide-react';
+import { MessageCircle, Sparkles, Star, Clock, MapPin, Users, Check, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
-
-const PROMO_DETAILS = [
-  {
-    id: "promo1",
-    title: "Descuentos exclusivos en salones premium",
-    description: "Obtené hasta 20% de descuento en los mejores salones de eventos de la ciudad. Perfectos para cumpleaños, aniversarios, reuniones corporativas y celebraciones especiales.",
-    longDescription: "Transformá tu celebración en una experiencia inolvidable con nuestros salones premium. Estos espacios han sido cuidadosamente seleccionados por su elegancia, equipamiento de primera calidad y ubicaciones estratégicas. Cada salón cuenta con decoración sofisticada, sistemas de sonido profesional, iluminación ambiente y personal especializado en eventos.",
-    discount: "20% OFF",
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-    venue: "Salones Premium",
-    features: ["Equipamiento audiovisual completo", "Servicio de catering gourmet incluido", "Decoración temática personalizada", "Estacionamiento valet gratuito"],
-    capacity: "50-200 personas",
-    duration: "Mínimo 4 horas",
-    location: "Buenos Aires, Córdoba, Rosario",
-    icon: Users,
-    benefits: [
-      "Coordinador de eventos dedicado",
-      "Setup y limpieza incluidos",
-      "Flexibilidad en horarios",
-      "Seguro de responsabilidad civil"
-    ],
-    restrictions: [
-      "Reserva mínima de 4 horas",
-      "Disponible de martes a domingo",
-      "Pago del 50% al reservar"
-    ]
-  },
-  {
-    id: "promo2",
-    title: "Espacios para workshops con precios especiales",
-    description: "15% de descuento en espacios ideales para talleres, cursos, presentaciones y eventos formativos. Ambientes profesionales y completamente equipados.",
-    longDescription: "Potenciá tu evento formativo en espacios diseñados específicamente para el aprendizaje y la colaboración. Nuestros co-works y estudios ofrecen el ambiente perfecto para workshops, seminarios, cursos y presentaciones. Con tecnología de punta y diseño funcional, garantizamos que tu audiencia se mantenga enfocada y comprometida.",
-    discount: "15% OFF",
-    image: "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-    venue: "Co-works y estudios",
-    features: ["Proyector 4K y pantalla gigante", "WiFi fibra óptica 1GB", "Aire acondicionado silencioso", "Coffee break premium incluido"],
-    capacity: "10-50 personas",
-    duration: "Por horas (mínimo 2hs)",
-    location: "Microcentro, Palermo, Belgrano",
-    icon: Camera,
-    benefits: [
-      "Soporte técnico en sitio",
-      "Material de oficina incluido",
-      "Salas de breakout disponibles",
-      "Grabación del evento opcional"
-    ],
-    restrictions: [
-      "Reserva mínima de 2 horas",
-      "Disponible lunes a viernes",
-      "Capacidad máxima estricta"
-    ]
-  },
-  {
-    id: "promo3",
-    title: "Happy hour extendido exclusivo",
-    description: "Disfrutá de promociones 2x1 y happy hours extendidos en los mejores bares de la ciudad. Una experiencia única solo disponible para usuarios de hubbica.",
-    longDescription: "Viví la experiencia gastronómica más exclusiva de la ciudad con nuestros happy hours extendidos. Estos bares han sido seleccionados por su ambiente único, carta de tragos premium y propuesta gastronómica innovadora. Cada establecimiento ofrece una experiencia diferente, desde rooftops con vista panorámica hasta speakeasies escondidos con la mejor mixología.",
-    discount: "2x1",
-    image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-    venue: "Bares seleccionados",
-    features: ["Tragos premium artesanales", "Música en vivo selecta", "Terraza con vista panorámica", "Menú gourmet de autor"],
-    capacity: "20-80 personas",
-    duration: "3-6 horas",
-    location: "San Telmo, Puerto Madero, Recoleta",
-    icon: Utensils,
-    benefits: [
-      "Mesa reservada garantizada",
-      "Atención personalizada",
-      "Carta de vinos premium",
-      "Ambiente exclusivo"
-    ],
-    restrictions: [
-      "Solo disponible de 18:00 a 22:00",
-      "Reserva con 48hs de anticipación",
-      "Consumo mínimo por persona"
-    ]
-  }
-];
+import WhatsAppButton from '@/components/WhatsAppButton';
+import { PROMO_DETAILS } from '@/data/promotions';
 
 const Promos = () => {
   const handleWhatsAppContact = (promoTitle?: string) => {
@@ -114,25 +38,16 @@ const Promos = () => {
                 Espacios únicos con descuentos especiales para hacer de tu evento algo inolvidable.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  onClick={() => handleWhatsAppContact()}
-                  size="lg" 
-                  className="rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  Consultar por WhatsApp
-                </Button>
-                
-                <Button 
-                  variant="outline"
-                  size="lg" 
-                  className="rounded-full border-brand-purple text-brand-purple hover:bg-brand-purple hover:text-white"
-                >
-                  <Phone className="mr-2 h-5 w-5" />
-                  Llamar ahora
-                </Button>
-              </div>
+              <WhatsAppButton 
+                phoneNumber="5491123456789"
+                message="¡Hola! Me interesa conocer más sobre las promociones exclusivas de hubbica."
+                size="lg" 
+                className="rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                trackingSource="promos-hero"
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Consultar por WhatsApp
+              </WhatsAppButton>
             </div>
           </div>
         </section>
@@ -242,14 +157,16 @@ const Promos = () => {
                           </ul>
                         </div>
                         
-                        <Button 
-                          onClick={() => handleWhatsAppContact(promo.title)}
+                        <WhatsAppButton 
+                          phoneNumber="5491123456789"
+                          message={`¡Hola! Me interesa la promoción "${promo.title}". ¿Podrían brindarme más información y ayudarme con la reserva?`}
                           size="lg" 
                           className="w-full rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                          trackingSource={`promo-${promo.id}`}
                         >
                           <MessageCircle className="mr-2 h-5 w-5" />
                           Consultar esta promoción
-                        </Button>
+                        </WhatsAppButton>
                       </div>
                     </div>
                   </div>
@@ -291,46 +208,6 @@ const Promos = () => {
                 <h3 className="font-semibold mb-2">¿Qué formas de pago aceptan?</h3>
                 <p className="text-gray-600 text-sm">Aceptamos transferencias, tarjetas de crédito y débito. También financiación en cuotas sin interés.</p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-brand-purple to-brand-deep-purple text-white">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-                ¿Listo para aprovechar estas promociones?
-              </h2>
-              
-              <p className="text-xl mb-8 text-white/90">
-                Nuestro equipo te ayuda a encontrar el espacio perfecto y aprovechar al máximo 
-                estas ofertas exclusivas. ¡No dejes pasar esta oportunidad!
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  onClick={() => handleWhatsAppContact()}
-                  size="lg" 
-                  className="rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                >
-                  <MessageCircle className="mr-2 h-6 w-6" />
-                  Escribinos por WhatsApp
-                </Button>
-                
-                <Button 
-                  variant="outline"
-                  size="lg" 
-                  className="rounded-full border-white text-white hover:bg-white hover:text-brand-purple"
-                >
-                  <Phone className="mr-2 h-6 w-6" />
-                  Llamar ahora: +54 11 2345-6789
-                </Button>
-              </div>
-              
-              <p className="mt-6 text-white/70 text-sm">
-                📞 Atención inmediata • 📱 WhatsApp 24/7 • ✅ Reservas confirmadas al instante
-              </p>
             </div>
           </div>
         </section>

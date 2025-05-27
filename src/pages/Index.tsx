@@ -5,7 +5,7 @@ import Hero from '@/components/Hero';
 import SpaceCard from '@/components/SpaceCard';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Users, Home, TrendingUp } from 'lucide-react';
 import PromoBanner from '@/components/PromoBanner';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
@@ -174,37 +174,107 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Become a host - Simplified and minimalist design */}
-        <section className="py-16 bg-gray-50">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-display font-bold mb-6">
-                Monetizá tu espacio
-              </h2>
-              
-              <p className="text-xl mb-8 text-gray-600">
-                Transformá tu espacio en una fuente de ingresos sin inversión inicial.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-                <Link to="/how-to-host" className="flex-1">
-                  <Button 
-                    size="lg" 
-                    className="w-full rounded-lg bg-brand-purple hover:bg-brand-deep-purple transition-colors"
-                  >
-                    Publicá tu espacio
-                  </Button>
-                </Link>
+        {/* Become a host - Restored to original attractive design */}
+        <section className="py-20 relative overflow-hidden">
+          {/* Background elements */}
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-purple/5 to-brand-orange/5"></div>
+          <div className="absolute top-0 left-0 w-72 h-72 bg-brand-purple/10 rounded-full -translate-x-36 -translate-y-36 blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-orange/10 rounded-full translate-x-48 translate-y-48 blur-3xl"></div>
+          
+          <div className="container relative z-10">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left content */}
+              <div className="space-y-8">
+                <div>
+                  <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
+                    Monetizá tu <span className="text-brand-purple">espacio</span>
+                  </h2>
+                  <p className="text-xl text-gray-600 leading-relaxed">
+                    Transformá tu espacio en una fuente de ingresos pasivos. Sin inversión inicial, sin complicaciones.
+                  </p>
+                </div>
                 
-                <WhatsAppButton 
-                  phoneNumber="5491234567890"
-                  message="Hola! Me interesa publicar mi espacio en Hubbica. ¿Podrías contarme más sobre cómo funciona?"
-                  variant="outline"
-                  className="px-6 py-3 rounded-lg border-gray-300 hover:bg-gray-50 transition-colors"
-                  trackingSource="monetize-section"
-                >
-                  Consultá
-                </WhatsAppButton>
+                {/* Benefits */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-brand-purple/10 rounded-full flex items-center justify-center">
+                      <TrendingUp className="h-6 w-6 text-brand-purple" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">Ingresos garantizados</h3>
+                      <p className="text-gray-600">Hasta $50.000 por mes según el espacio</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-brand-purple/10 rounded-full flex items-center justify-center">
+                      <Users className="h-6 w-6 text-brand-purple" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">Comunidad activa</h3>
+                      <p className="text-gray-600">Miles de usuarios buscando espacios únicos</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-brand-purple/10 rounded-full flex items-center justify-center">
+                      <Home className="h-6 w-6 text-brand-purple" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">Gestión simple</h3>
+                      <p className="text-gray-600">Nosotros nos encargamos de todo el proceso</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <Link to="/how-to-host" className="flex-1">
+                    <Button 
+                      size="lg" 
+                      className="w-full rounded-xl bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-300 text-base py-6 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
+                      Empezar ahora
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                  
+                  <WhatsAppButton 
+                    phoneNumber="5491234567890"
+                    message="Hola! Me interesa publicar mi espacio en Hubbica. ¿Podrías contarme más sobre cómo funciona?"
+                    variant="outline"
+                    className="px-8 py-6 rounded-xl border-2 border-gray-300 hover:border-brand-purple hover:bg-brand-purple/5 transition-all duration-300 text-base font-medium"
+                    trackingSource="monetize-section"
+                  >
+                    Consultá gratis
+                  </WhatsAppButton>
+                </div>
+              </div>
+              
+              {/* Right image */}
+              <div className="relative">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
+                    src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                    alt="Espacio moderno para eventos" 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                
+                {/* Floating stats */}
+                <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-4 backdrop-blur-sm">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-brand-purple">$45K</div>
+                    <div className="text-sm text-gray-600">promedio/mes</div>
+                  </div>
+                </div>
+                
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 backdrop-blur-sm">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-brand-orange">300+</div>
+                    <div className="text-sm text-gray-600">anfitriones</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -8,6 +8,7 @@ import IntentSearch from './IntentSearch';
  * 
  * Características:
  * - Diseño responsive optimizado para todos los dispositivos
+ * - Altura optimizada para mostrar todo el contenido sin scroll
  * - Imagen de fondo con overlay mejorado
  * - Integración de búsqueda por intención
  * - Botones de llamada a la acción
@@ -15,7 +16,7 @@ import IntentSearch from './IntentSearch';
  */
 const Hero = () => {
   return (
-    <div className="relative overflow-hidden py-16 sm:py-24 md:py-32">
+    <div className="relative overflow-hidden py-8 sm:py-12 md:py-16 min-h-[85vh] flex items-center">
       {/* Imagen de fondo con mejor visibilidad */}
       <div className="absolute inset-0 -z-10">
         <img 
@@ -26,36 +27,36 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-white/75 to-white/65 backdrop-blur-[1px]"></div>
       </div>
       
-      <div className="container max-w-6xl relative z-10">
-        <div className="text-center space-y-8 md:space-y-10 animate-fade-in">
+      <div className="container max-w-6xl relative z-10 w-full">
+        <div className="text-center space-y-6 md:space-y-8 animate-fade-in">
           {/* Título principal optimizado */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight max-w-5xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight max-w-4xl mx-auto">
             Espacios únicos para <span className="text-brand-purple">experiencias</span> inolvidables
           </h1>
           
           {/* Descripción más proporcionada */}
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4 sm:px-0 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl mx-auto px-4 sm:px-0 leading-relaxed">
             Describe la experiencia que quieres crear y encuentra el espacio perfecto
           </p>
           
           {/* Barra de búsqueda con ancho optimizado */}
-          <div className="w-full max-w-xl mx-auto px-4 sm:px-0">
+          <div className="w-full max-w-md mx-auto px-4 sm:px-0">
             <IntentSearch />
           </div>
           
           {/* Botones de acción mejorados */}
-          <div className="pt-6 flex flex-wrap gap-4 justify-center">
+          <div className="pt-4 flex flex-wrap gap-3 justify-center">
             <Link to="/spaces">
               <Button 
                 variant="outline" 
-                className="rounded-full text-sm sm:text-base px-8 py-3.5 border-2 border-brand-purple/30 hover:border-brand-purple hover:bg-brand-purple/5 transition-all duration-300 font-medium shadow-sm hover:shadow-md"
+                className="rounded-full text-sm px-6 py-2.5 border-2 border-brand-purple/30 hover:border-brand-purple hover:bg-brand-purple/5 transition-all duration-300 font-medium shadow-sm hover:shadow-md"
               >
                 Explorar espacios
               </Button>
             </Link>
             <Link to="/how-to-host">
               <Button 
-                className="rounded-full text-sm sm:text-base px-8 py-3.5 bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="rounded-full text-sm px-6 py-2.5 bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Publica tu espacio
               </Button>

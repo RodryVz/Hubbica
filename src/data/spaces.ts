@@ -1,5 +1,7 @@
-
 import { Space } from '@/components/SpaceCard';
+
+// Re-exportamos la interfaz Space para que esté disponible desde este módulo
+export type { Space };
 
 export const ALL_SPACES: Space[] = [
   {

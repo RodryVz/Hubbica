@@ -16,6 +16,7 @@ export interface Space {
   capacity: number;
   tags: string[];
   rating?: number;
+  whatsappNumber: string; // Número de WhatsApp del propietario
 }
 
 interface SpaceCardProps {

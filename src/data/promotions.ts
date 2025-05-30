@@ -1,4 +1,3 @@
-
 import { Users, Camera, Utensils, LucideIcon } from 'lucide-react';
 
 export interface PromoDetails {
@@ -16,6 +15,7 @@ export interface PromoDetails {
   icon: LucideIcon;
   benefits: string[];
   restrictions: string[];
+  whatsappNumber: string;
 }
 
 export const PROMO_DETAILS: PromoDetails[] = [
@@ -42,7 +42,8 @@ export const PROMO_DETAILS: PromoDetails[] = [
       "Reserva mínima de 4 horas",
       "Disponible de martes a domingo",
       "Pago del 50% al reservar"
-    ]
+    ],
+    whatsappNumber: "543624111111"
   },
   {
     id: "promo2",
@@ -67,7 +68,8 @@ export const PROMO_DETAILS: PromoDetails[] = [
       "Reserva mínima de 2 horas",
       "Disponible lunes a viernes",
       "Capacidad máxima estricta"
-    ]
+    ],
+    whatsappNumber: "543624222222"
   },
   {
     id: "promo3",
@@ -92,6 +94,7 @@ export const PROMO_DETAILS: PromoDetails[] = [
       "Solo disponible de 18:00 a 22:00",
       "Reserva con 48hs de anticipación",
       "Consumo mínimo por persona"
-    ]
+    ],
+    whatsappNumber: "543624333333"
   }
 ];

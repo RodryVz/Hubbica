@@ -175,34 +175,34 @@ const Index = () => {
         </section>
         
         {/* Become a host - Restored to original attractive design */}
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-16 relative overflow-hidden">
           {/* Background elements */}
           <div className="absolute inset-0 bg-gradient-to-r from-brand-purple/5 to-brand-orange/5"></div>
-          <div className="absolute top-0 left-0 w-72 h-72 bg-brand-purple/10 rounded-full -translate-x-36 -translate-y-36 blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-orange/10 rounded-full translate-x-48 translate-y-48 blur-3xl"></div>
+          <div className="absolute top-0 left-0 w-64 h64 bg-brand-purple/10 rounded-full -translate-x-36 -translate-y-36 blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-orange/10 rounded-full translate-x-48 translate-y-48 blur-3xl"></div>
           
-          <div className="container relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="container relative z-10 max-w-6xl">
+            <div className="grid lg:grid-cols-2 gap-10 items-center">
               {/* Left content */}
-              <div className="space-y-8">
+              <div className="space-y-6">
                 <div>
                   <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
                     Monetizá tu <span className="text-brand-purple">espacio</span>
                   </h2>
-                  <p className="text-xl text-gray-600 leading-relaxed">
+                  <p className="text-md text-gray-600 leading-relaxed">
                     Transformá tu espacio en una fuente de ingresos pasivos. Sin inversión inicial, sin complicaciones.
                   </p>
                 </div>
                 
                 {/* Benefits */}
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-brand-purple/10 rounded-full flex items-center justify-center">
                       <TrendingUp className="h-6 w-6 text-brand-purple" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg">Ingresos garantizados</h3>
-                      <p className="text-gray-600">Hasta $50.000 por mes según el espacio</p>
+                      <p className="text-gray-600">$50.000 por mes según el espacio</p>
                     </div>
                   </div>
                   
@@ -228,25 +228,27 @@ const Index = () => {
                 </div>
                 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Link to="/how-to-host" className="flex-1">
+                <div className="flex flex-col sm:flex-row gap-2 pt-4 items-center">  
+                  {/* Botón "Empezar ahora" - Reducido para igualar al de WhatsApp */}
+                  <Link to="/how-to-host">
                     <Button 
                       size="lg" 
-                      className="w-full rounded-xl bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-300 text-base py-6 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                      className="w-fit px-6 py-3 rounded-xl border-2 bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-300 text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                     >
                       Empezar ahora
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
                   
+                  {/* Botón WhatsApp - Se mantiene igual pero con py-3 para igualar altura */}
                   <WhatsAppButton 
-                    phoneNumber="5491234567890"
-                    message="Hola! Me interesa publicar mi espacio en Hubbica. ¿Podrías contarme más sobre cómo funciona?"
+                    phoneNumber="543624968347"
+                    message="Hola! Me interesa publicar mi espacio en Hubbica. ¿Podrías conteme más sobre cómo funciona?"
                     variant="outline"
-                    className="px-8 py-6 rounded-xl border-2 border-gray-300 hover:border-brand-purple hover:bg-brand-purple/5 transition-all duration-300 text-base font-medium"
+                    className="w-fit px-6 py-3 rounded-xl border-2 bg-green-500 border-green-300 hover:border-green-900 hover:bg-green-700 transition-all duration-300 text-base font-medium flex items-center gap-2 transform hover:-translate-y-1"
                     trackingSource="monetize-section"
                   >
-                    Consultá gratis
+                    Contactar
                   </WhatsAppButton>
                 </div>
               </div>
@@ -269,12 +271,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 backdrop-blur-sm">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-brand-orange">300+</div>
-                    <div className="text-sm text-gray-600">anfitriones</div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

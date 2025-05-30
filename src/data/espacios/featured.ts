@@ -30,6 +30,7 @@ export const FEATURED_SPACES: Space[] = [
     capacity: 50,
     tags: ['Terraza', 'Vistas', 'Exterior', 'Bar'],
     rating: 4.8,
+    whatsappNumber: ''
   },
   {
     id: '2',
@@ -46,6 +47,7 @@ export const FEATURED_SPACES: Space[] = [
     capacity: 30,
     tags: ['Industrial', 'Taller', 'Creativo'],
     rating: 4.6,
+    whatsappNumber: ''
   },
   {
     id: '3',
@@ -62,6 +64,7 @@ export const FEATURED_SPACES: Space[] = [
     capacity: 20,
     tags: ['Cocina', 'Loft', 'Cenas'],
     rating: 4.9,
+    whatsappNumber: ''
   },
   {
     id: '4',
@@ -78,5 +81,6 @@ export const FEATURED_SPACES: Space[] = [
     capacity: 15,
     tags: ['Yoga', 'Jardín', 'Wellness'],
     rating: 4.7,
+    whatsappNumber: ''
   },
 ];

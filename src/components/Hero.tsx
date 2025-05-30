@@ -30,7 +30,7 @@ const Hero = () => {
       <div className="container max-w-6xl relative z-10 w-full">
         <div className="text-center space-y-6 md:space-y-8 animate-fade-in">
           {/* Título principal optimizado */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-display font-bold leading-tight max-w-5xl mx-auto">
             Espacios únicos para <span className="text-brand-purple">experiencias</span> inolvidables
           </h1>
           
@@ -40,7 +40,7 @@ const Hero = () => {
           </p>
           
           {/* Barra de búsqueda con ancho optimizado */}
-          <div className="w-full max-w-md mx-auto px-4 sm:px-0">
+           <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl mx-auto px-4 sm:px-0">
             <IntentSearch />
           </div>
           

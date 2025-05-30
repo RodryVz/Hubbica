@@ -78,6 +78,7 @@ const MOCK_FAVORITES: Space[] = [
     capacity: 50,
     tags: ['Terraza', 'Vistas', 'Exterior', 'Bar'],
     rating: 4.8,
+    whatsappNumber: ''
   },
   {
     id: '3',
@@ -93,6 +94,7 @@ const MOCK_FAVORITES: Space[] = [
     capacity: 20,
     tags: ['Cocina', 'Loft', 'Cenas'],
     rating: 4.9,
+    whatsappNumber: ''
   },
 ];
 

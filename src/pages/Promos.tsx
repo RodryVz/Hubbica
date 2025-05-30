@@ -1,4 +1,3 @@
-
 import { MessageCircle, Sparkles, Star, Clock, MapPin, Users, Check, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
@@ -21,7 +20,7 @@ const Promos = () => {
       <div className="min-h-screen bg-gradient-to-br from-brand-purple/5 to-white">
         {/* Hero Section */}
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-purple/10 to-brand-orange/10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-purple/5 to-brand-orange/5"></div>
           <div className="container relative z-10">
             <div className="text-center max-w-4xl mx-auto">
               <div className="flex items-center justify-center gap-2 mb-6">
@@ -33,21 +32,11 @@ const Promos = () => {
                 Ofertas únicas solo en hubbica
               </h1>
               
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 mb-8 leading-relaxed">
                 Descubrí promociones exclusivas que no encontrarás en ningún otro lugar. 
                 Espacios únicos con descuentos especiales para hacer de tu evento algo inolvidable.
               </p>
               
-              <WhatsAppButton 
-                phoneNumber="5491123456789"
-                message="¡Hola! Me interesa conocer más sobre las promociones exclusivas de hubbica."
-                size="lg" 
-                className="rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
-                trackingSource="promos-hero"
-              >
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Consultar por WhatsApp
-              </WhatsAppButton>
             </div>
           </div>
         </section>
@@ -158,13 +147,13 @@ const Promos = () => {
                         </div>
                         
                         <WhatsAppButton 
-                          phoneNumber="5491123456789"
+                          phoneNumber={promo.whatsappNumber}
                           message={`¡Hola! Me interesa la promoción "${promo.title}". ¿Podrían brindarme más información y ayudarme con la reserva?`}
                           size="lg" 
                           className="w-full rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
                           trackingSource={`promo-${promo.id}`}
                         >
-                          <MessageCircle className="mr-2 h-5 w-5" />
+                          
                           Consultar esta promoción
                         </WhatsAppButton>
                       </div>

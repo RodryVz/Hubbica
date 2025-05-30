@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="container">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           <div>
-            <h3 className="font-display text-lg mb-4">experiencias.space</h3>
+            <h3 className="font-display text-lg mb-4">Hubbica</h3>
             <p className="text-gray-300 text-sm">
               Conectamos personas con espacios únicos para experiencias memorables.
             </p>
@@ -86,7 +86,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 md:mt-12 pt-6 border-t border-gray-700 text-center text-gray-400 text-sm">
-          <p>© 2025 experiencias.space. Todos los derechos reservados.</p>
+          <p>© 2025 Hubbica. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

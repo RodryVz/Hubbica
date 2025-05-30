@@ -1,6 +1,9 @@
 import { Space } from '@/components/SpaceCard';
 
 // Re-exportamos la interfaz Space para que esté disponible desde este módulo
+// Agregas ACA los espacios que no estan en pagina principal "destacados".
+
+
 export type { Space };
 
 export const ALL_SPACES: Space[] = [
@@ -19,6 +22,7 @@ export const ALL_SPACES: Space[] = [
     capacity: 50,
     tags: ['Terraza', 'Vistas', 'Exterior', 'Bar'],
     rating: 4.8,
+    whatsappNumber: '3624387725', // Número del propietario
   },
   {
     id: '2',
@@ -35,6 +39,7 @@ export const ALL_SPACES: Space[] = [
     capacity: 30,
     tags: ['Industrial', 'Taller', 'Creativo'],
     rating: 4.6,
+    whatsappNumber: '+543624633224', // Número del propietario
   },
   {
     id: '3',
@@ -51,6 +56,7 @@ export const ALL_SPACES: Space[] = [
     capacity: 20,
     tags: ['Cocina', 'Loft', 'Cenas'],
     rating: 4.9,
+    whatsappNumber: '3624777456', // Número del propietario
   },
   {
     id: '4',
@@ -67,5 +73,23 @@ export const ALL_SPACES: Space[] = [
     capacity: 15,
     tags: ['Yoga', 'Jardín', 'Wellness'],
     rating: 4.7,
+    whatsappNumber: '3624999789', // Número del propietario
+  },
+  {
+    id: '5',
+    name: 'Sala de Yoga con Jardín',
+    description: 'Tranquilo espacio para prácticas de yoga, meditación o actividades de bienestar con acceso a jardín.',
+    images: [
+      'https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80',
+    ],
+    city: 'Sevilla',
+    neighborhood: 'Triana',
+    pricePerHour: 45,
+    revenueShare: 0,
+    capacity: 15,
+    tags: ['Yoga', 'Jardín', 'Wellness'],
+    rating: 4.7,
+    whatsappNumber: '3624999789', // Número del propietario
   },
 ];

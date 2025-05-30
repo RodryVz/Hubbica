@@ -22,7 +22,7 @@ const HostModal = ({ open, onOpenChange }: HostModalProps) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-display">Publica tu espacio en Experiencias.space</DialogTitle>
+          <DialogTitle className="text-2xl font-display">Publica tu espacio en Hubbica</DialogTitle>
           <DialogDescription className="pt-4 text-base">
             Estás a punto de comenzar el proceso de publicación de tu espacio. Solo necesitamos algunos datos para crear tu anuncio:
           </DialogDescription>

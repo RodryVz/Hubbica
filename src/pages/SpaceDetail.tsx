@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ArrowLeft, Users, Clock, BadgeCheck, X } from 'lucide-react';
@@ -30,7 +29,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
  * - To change data source: Update the useEffect hook that loads space data
  * - To change layout: Modify the JSX structure below
  * - To change pricing conversion: Update the eurToArs function
- * - To modify contact phone: Update the phoneNumber in WhatsAppButton
+ * - WhatsApp numbers are now taken from each space's whatsappNumber field
  */
 
 /**
@@ -42,7 +41,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
  * - Location
  * - Pricing
  * - Capacity
- * - WhatsApp contact with tracking
+ * - WhatsApp contact with tracking (using owner's specific number)
  */
 const SpaceDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -208,9 +207,9 @@ const SpaceDetail = () => {
                 </div>
               </div>
               
-              {/* INTEGRATION POINT: WhatsApp Contact Button with Tracking */}
+              {/* INTEGRATION POINT: WhatsApp Contact Button with Dynamic Owner Number */}
               <WhatsAppButton
-                phoneNumber="5491234567890" // CONFIGURABLE: Replace with actual host phone
+                phoneNumber={space.whatsappNumber} // DYNAMIC: Now uses owner's specific WhatsApp number
                 message="Me interesa este espacio para un evento."
                 trackingSource="space_detail"
                 spaceName={space.name}

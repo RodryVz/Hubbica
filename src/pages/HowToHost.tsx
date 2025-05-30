@@ -11,10 +11,10 @@ const HowToHost = () => {
         <div className="max-w-4xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12 md:mb-16">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 md:mb-6 leading-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-5xl font-display font-bold mb-4 md:mb-6 leading-tight">
               Transformá tu espacio en una fuente de <span className="text-brand-purple">ingresos extraordinarios</span>
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4 md:px-0">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl mx-auto px-4 sm:px-0 leading-relaxed">
               Rentabilizá tus espacios sin utilizar y creá nuevas oportunidades de negocio sin inversión inicial
             </p>
           </div>
@@ -92,12 +92,12 @@ const HowToHost = () => {
           </div>
 
           {/* CTA Section - Enhanced with better visual appeal */}
-          <div className="bg-gradient-to-r from-brand-purple/10 to-white p-8 lg:p-12 rounded-2xl text-center mx-4 md:mx-0 shadow-sm border border-brand-purple/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-purple/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-orange/5 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+          <div className="bg-gradient-to-r from-brand-purple/25 to-white p-8 lg:p-12 rounded-2xl text-center mx-4 md:mx-0 shadow-sm border border-brand-purple/10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-purple/15 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-orange/15 rounded-full -ml-32 -mb-32 blur-3xl"></div>
             
             <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">
+              <h2 className="text-2xl md:text-4xl font-display font-bold mb-4">
                 ¿Listo para empezar a generar ingresos?
               </h2>
               <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">

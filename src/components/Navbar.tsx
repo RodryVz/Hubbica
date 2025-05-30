@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeToggle from './ThemeToggle';
 import WhatsAppButton from './WhatsAppButton';
+import Icon from '../../public/icon.png'
 
 /**
  * Navbar component - Provides site-wide navigation with responsive design
@@ -35,9 +36,14 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-1">
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-full bg-brand-purple text-white flex items-center justify-center font-display font-bold">H</div>
-          <span className="font-display text-xl tracking-tight">hub<span className="text-brand-purple">bica</span></span>
+        <Link to="/" className="flex items-center gap-0">
+          
+          <img 
+            src={Icon} 
+            alt="Hubbica Logo" 
+            className="h-16 w-16 gap-1 object-contain"
+          />
+          <span className="font-display text-xl tracking-tight pt-1">hub<span className="text-brand-purple">bica</span></span>
         </Link>
         
         {/* Desktop Navigation */}
@@ -63,11 +69,11 @@ const Navbar = () => {
           {/* WhatsApp contact button for CEO - Simplified styling */}
           <div className="hidden sm:inline-flex">
             <WhatsAppButton 
-              phoneNumber="5491234567890"
+              phoneNumber="543624968347"
               message="Hola! Me gustaría obtener más información sobre Hubbica."
               variant="ghost"
               size="icon"
-              className="h-10 w-10 text-green-600 hover:text-green-700 hover:bg-green-50 transition-all duration-200"
+              className="h-12 w-12 text-green-600 hover:text-green-900 hover:bg-green-80 transition-all duration-200"
               trackingSource="navbar"
             />
           </div>
@@ -124,7 +130,7 @@ const Navbar = () => {
                     trackingSource="navbar-mobile"
                     onClick={handleLinkClick}
                   >
-                    Contactar CEO
+                    Contactar sopote
                   </WhatsAppButton>
                 </div>
               </div>

@@ -133,13 +133,7 @@ const PromoBanner = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4">
-                  <Button 
-                    size="sm" 
-                    className="md:size-lg rounded-full bg-brand-purple hover:bg-brand-deep-purple group-hover:scale-105 transition-all duration-300"
-                  >
-                    <MessageCircle className="mr-2 h-4 w-4" aria-hidden="true" />
-                    Ver promociones
-                  </Button>
+                  
                   
                   <span className="text-white/70 text-xs md:text-sm">
                     {currentPromo.venue}

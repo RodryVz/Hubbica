@@ -15,6 +15,7 @@ import UserDashboard from './pages/UserDashboard';
 import HostDashboard from './pages/HostDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import NotFound from './pages/NotFound';
+import GoogleAnalytics from './components/GoogleAnalytics'
 
 // Create a client
 const queryClient = new QueryClient({
@@ -31,6 +32,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <Router>
+          <GoogleAnalytics />
           <div className="App">
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>

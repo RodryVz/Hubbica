@@ -130,7 +130,7 @@ const Navbar = () => {
                     trackingSource="navbar-mobile"
                     onClick={handleLinkClick}
                   >
-                    Contactar sopote
+                    Contactar soporte
                   </WhatsAppButton>
                 </div>
               </div>

@@ -143,10 +143,10 @@ const SpaceDetail = () => {
       <div className="container py-4 md:py-8">
         {/* Navigation back to spaces */}
         <div className="mb-4 md:mb-6">
-          <Button variant="ghost" asChild className="px-0 -ml-3">
+          <Button variant="ghost" asChild className="px-3 py-2 -ml-3 hover:bg-purple-500 rounded-md transition-colors">
             <a href="/spaces">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Volver a espacios
+              Volver
             </a>
           </Button>
         </div>

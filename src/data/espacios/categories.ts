@@ -48,8 +48,8 @@ export const CATEGORIES: Category[] = [
  * para el filtrado automático en la página de espacios.
  */
 export const CATEGORY_TAG_MAPPING: Record<string, string[]> = {
-  parties: ['Terraza', 'Bar', 'Exterior', 'Celebraciones'],
+  parties: ['Terraza', 'Bar', 'Exterior', 'Celebraciones', 'cumpleaños'],
   workshops: ['Taller', 'Industrial', 'Creativo', 'Presentaciones'],
-  photoshoots: ['Fotografía', 'Estudio', 'Industrial', 'Loft'],
+  photoshoots: ['Fotografía', 'Estudio', 'Industrial', 'Loft', 'creacion contenido'],
   meetings: ['Reuniones', 'Corporativo', 'Presentaciones', 'Oficina'],
 };

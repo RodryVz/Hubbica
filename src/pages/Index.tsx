@@ -23,24 +23,7 @@ const Index = () => {
         <PromoBanner />
         
         {/* Featured spaces */}
-        <section className="py-16 bg-gray-50">
-          <div className="container">
-            <div className="flex justify-between items-center mb-10">
-              <h2 className="text-3xl font-display font-bold">
-                Espacios destacados
-              </h2>
-              <Link to="/spaces">
-                <Button variant="outline">Ver todos</Button>
-              </Link>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {FEATURED_SPACES.map((space) => (
-                <SpaceCard key={space.id} space={space} />
-              ))}
-            </div>
-          </div>
-        </section>
+        
         
         {/* Categories - Enhanced with subtle animations and improved visuals */}
         <section className="py-16">

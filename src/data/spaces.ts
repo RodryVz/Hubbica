@@ -7,89 +7,77 @@ import { Space } from '@/components/SpaceCard';
 export type { Space };
 
 export const ALL_SPACES: Space[] = [
-  {
+   {
     id: '1',
-    name: 'Terraza con Vista Panorámica',
-    description: 'Terraza con vista panorámica al centro histórico, perfecta para eventos sociales y afterworks.',
+    name: 'Salon de fiesta',
+    description: 'Tranquilo espacios para festejos, salon ambientado para cumpleaños o reuniones',
     images: [
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-      'https://images.unsplash.com/photo-1580541631971-c7f8f8a1f407?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
+      'https://images.unsplash.com/photo-1679205691593-bd4a01e2108b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1679205691779-4683ed620470?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1679205691613-624b243d1ac4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     ],
-    city: 'Barcelona',
-    neighborhood: 'Gracia',
-    pricePerHour: 120,
-    revenueShare: 15,
-    capacity: 50,
-    tags: ['Terraza', 'Vistas', 'Exterior', 'Bar'],
-    rating: 4.8,
-    whatsappNumber: '3624387725', // Número del propietario
+    city: 'Resistencia',
+    neighborhood: 'Chaco',
+    pricePerHour: 12,
+    revenueShare: 0,
+    capacity: 15,
+    tags: ['cumpleaños', 'eventos', 'fiestas'],
+    rating: 4.7,
+    whatsappNumber: '3624999789', // Número del propietario
   },
   {
     id: '2',
     name: 'Estudio Industrial para Talleres',
-    description: 'Espacioso estudio de estilo industrial ideal para workshops, sesiones fotográficas o presentaciones.',
+    description: 'Espacioso estudio de estilo industrial ideal, sesiones fotográficas o presentaciones.',
     images: [
-      'https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      'https://images.pexels.com/photos/6045326/pexels-photo-6045326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/889996/pexels-photo-889996.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+      'https://images.pexels.com/photos/6378156/pexels-photo-6378156.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     ],
-    city: 'Madrid',
-    neighborhood: 'Malasaña',
-    pricePerHour: 80,
+    city: 'Resistencia',
+    neighborhood: 'Chaco',
+    pricePerHour: 11,
     revenueShare: 0,
     capacity: 30,
-    tags: ['Industrial', 'Taller', 'Creativo'],
+    tags: ['Industrial', 'Taller', 'Creativo', 'estudio', 'sesiones fotograficas'],
     rating: 4.6,
     whatsappNumber: '+543624633224', // Número del propietario
   },
   {
     id: '3',
-    name: 'Loft con Cocina para Events',
-    description: 'Acogedor loft con cocina profesional integrada, perfecto para eventos gastronómicos y cenas privadas.',
+    name: 'Cocina para creacion de contenidos o fotografias',
+    description: 'Cocina profesional integrada, perfecto para eventos gastronómicos y creacion de contenido UGC.',
     images: [
-      'https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      'https://images.pexels.com/photos/7045939/pexels-photo-7045939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       'https://images.unsplash.com/photo-1588854337115-1c67d9247e4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      'https://images.pexels.com/photos/8089077/pexels-photo-8089077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     ],
-    city: 'Valencia',
-    neighborhood: 'Ruzafa',
-    pricePerHour: 100,
+    city: 'Corrientes',
+    neighborhood: 'Capital',
+    pricePerHour: 8,
     revenueShare: 10,
     capacity: 20,
-    tags: ['Cocina', 'Loft', 'Cenas'],
+    tags: ['Cocina', 'Loft', 'Cenas', 'eventos'],
     rating: 4.9,
     whatsappNumber: '3624777456', // Número del propietario
   },
   {
     id: '4',
-    name: 'Sala de Yoga con Jardín',
-    description: 'Tranquilo espacio para prácticas de yoga, meditación o actividades de bienestar con acceso a jardín.',
+    name: 'Salon para eventos corporativos',
+    description: 'Espacio exclusivos para cenas y eventos corporativos',
     images: [
-      'https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-      'https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80',
+      'https://images.pexels.com/photos/17057017/pexels-photo-17057017/free-photo-of-restaurante-arbol-ventanas-mesas.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/16120249/pexels-photo-16120249/free-photo-of-mesas-pantalla-recepcion-de-la-boda-salon-de-banquetes.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+      'https://images.pexels.com/photos/17294764/pexels-photo-17294764/free-photo-of-restaurante-flores-plantas-decoracion.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     ],
-    city: 'Sevilla',
-    neighborhood: 'Triana',
-    pricePerHour: 45,
+    city: 'Corrientes',
+    neighborhood: 'Capital',
+    pricePerHour: 20,
     revenueShare: 0,
     capacity: 15,
-    tags: ['Yoga', 'Jardín', 'Wellness'],
+    tags: ['Cena', 'Eventos', 'Presentaciones'],
     rating: 4.7,
     whatsappNumber: '3624999789', // Número del propietario
   },
-  {
-    id: '5',
-    name: 'Sala de Yoga con Jardín',
-    description: 'Tranquilo espacio para prácticas de yoga, meditación o actividades de bienestar con acceso a jardín.',
-    images: [
-      'https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-      'https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80',
-    ],
-    city: 'Sevilla',
-    neighborhood: 'Triana',
-    pricePerHour: 45,
-    revenueShare: 0,
-    capacity: 15,
-    tags: ['Yoga', 'Jardín', 'Wellness'],
-    rating: 4.7,
-    whatsappNumber: '3624999789', // Número del propietario
-  },
+  
 ];

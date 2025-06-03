@@ -103,7 +103,7 @@ const HowToHost = () => {
               <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
                 Unite a miles de anfitriones que ya están multiplicando sus ingresos compartiendo sus espacios.
               </p>
-              <Link to="/host">
+              <Link to="https://tally.so/r/wzo8MZ" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="rounded-full group">
                   Crear mi espacio ahora 
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

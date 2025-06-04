@@ -113,7 +113,7 @@ const Index = () => {
                     <h3 className="text-xl font-display mb-3 group-hover:text-brand-purple transition-colors">Contactá al anfitrión</h3>
                     
                     <p className="text-gray-600">
-                      Reservá directamente o acordá un modelo de monetización compartida con el anfitrión.
+                      Reservá directamente y acordá un modelo de monetización con el anfitrión.
                     </p>
                     
                     <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -185,7 +185,7 @@ const Index = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg">Ingresos garantizados</h3>
-                      <p className="text-gray-600">$50.000 por mes según el espacio</p>
+                      <p className="text-gray-600">$400.000 por mes según el espacio</p>
                     </div>
                   </div>
                   
@@ -249,7 +249,7 @@ const Index = () => {
                 {/* Floating stats */}
                 <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-4 backdrop-blur-sm">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-brand-purple">$45K</div>
+                    <div className="text-2xl font-bold text-brand-purple">$400K</div>
                     <div className="text-sm text-gray-600">promedio/mes</div>
                   </div>
                 </div>

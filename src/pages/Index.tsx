@@ -216,9 +216,9 @@ const Index = () => {
                   <Link to="/how-to-host">
                     <Button 
                       size="lg" 
-                      className="w-fit px-6 py-3 rounded-xl border-2 bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-300 text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                      className="rounded-full bg-gradient-to-r from-brand-purple to-brand-deep-purple hover:from-brand-deep-purple hover:to-brand-purple transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1"
                     >
-                      Empezar ahora
+                      Publica tu espacio
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
@@ -228,7 +228,7 @@ const Index = () => {
                     phoneNumber="543624968347"
                     message="Hola! Me interesa publicar mi espacio en Hubbica. ¿Podrías conteme más sobre cómo funciona?"
                     variant="outline"
-                    className="w-fit px-6 py-3 rounded-xl border-2 bg-green-500 border-green-300 hover:border-green-900 hover:bg-green-700 transition-all duration-300 text-base font-medium flex items-center gap-2 transform hover:-translate-y-1"
+                    className="rounded-full px-6 py-3 border-2 bg-green-500 border-green-300 hover:border-green-900 hover:bg-green-700 transition-all duration-300 text-base font-medium flex items-center gap-2 transform hover:-translate-y-1"
                     trackingSource="monetize-section"
                   >
                     Contactar

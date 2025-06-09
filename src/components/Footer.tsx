@@ -30,7 +30,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/inspiration" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
+                <Link to="#" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
                   Inspiración
                 </Link>
               </li>
@@ -46,17 +46,17 @@ const Footer = () => {
             <h4 className="font-medium mb-3">Soporte</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/help" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
+                <Link to="#" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
                   Centro de ayuda
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
+                <Link to="#" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
                   Contáctanos
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
+                <Link to="#" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
                   Preguntas frecuentes
                 </Link>
               </li>
@@ -67,17 +67,17 @@ const Footer = () => {
             <h4 className="font-medium mb-3">Legal</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/terms" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
+                <Link to="#" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
                   Términos de servicio
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
+                <Link to="#" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
                   Política de privacidad
                 </Link>
               </li>
               <li>
-                <Link to="/cookies" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
+                <Link to="#" className="text-gray-300 hover:text-brand-purple transition-colors text-sm">
                   Política de cookies
                 </Link>
               </li>

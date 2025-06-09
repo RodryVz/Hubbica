@@ -45,19 +45,24 @@ const Hero = () => {
           
           {/* Barra de búsqueda con ancho optimizado y mejor responsive */}
           <div className="mb-10 sm:mb-5 md:mb-6 lg:mb-8">
-            <div className="w-full max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto px-2 sm:px-0">
+            <div className="w-full max-w-sm xs:max-w-md sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto px-2 sm:px-0">
               <IntentSearch />
             </div>
           </div>
           
           {/* Botones de acción mejorados con mejor espaciado móvil */}
-          <div className="pt-1 sm:pt-3 md:pt-4 flex flex-col xs:flex-row gap-2 xs:gap-3 justify-center items-center max-w-sm xs:max-w-none mx-auto">
+          <div className="pt-1 sm:pt-3 md:pt-4 flex flex-col xs:flex-row gap-2 xs:gap-3 md:flex-row justify-center items-center max-w-sm xs:max-w-none mx-auto">
             <Link to="/spaces" className="w-full xs:w-auto">
               <Button 
                 variant="outline" 
-                className="w-full xs:w-auto rounded-full text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 border-2 border-brand-purple/30 hover:border-brand-purple hover:bg-brand-purple/5 transition-all duration-300 font-medium shadow-sm hover:shadow-md"
+                className="w-full xs:w-auto rounded-full text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 border-2 border-brand-purple hover:border-brand-purple/80 bg-gradient-to-r from-white to-brand-purple/5 hover:from-brand-purple/10 hover:to-brand-purple/15 transition-all duration-500 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 relative overflow-hidden group"
               >
-                Explorar espacios
+                <span className="relative z-10 flex items-center gap-2">
+                  <span className="group-hover:animate-bounce">🔍</span>
+                  Explorar espacios
+                </span>
+                {/* Efecto de ondas sutiles */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
               </Button>
             </Link>
             <Link to="/how-to-host" className="w-full xs:w-auto">

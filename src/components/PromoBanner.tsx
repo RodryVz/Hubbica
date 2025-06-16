@@ -87,15 +87,7 @@ const PromoBanner = () => {
 
   return (
     <div className="relative overflow-hidden mx-auto my-8 max-w-6xl px-4">
-      <Button 
-        variant="ghost" 
-        size="icon" 
-        className="absolute top-4 right-4 z-20 bg-white/80 backdrop-blur-sm hover:bg-white/90 rounded-full" 
-        onClick={() => setIsOpen(false)}
-        aria-label="Cerrar promoción"
-      >
-        <X size={16} />
-      </Button>
+     
       
       <Link to={currentPromo.link} className="block group">
         <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
